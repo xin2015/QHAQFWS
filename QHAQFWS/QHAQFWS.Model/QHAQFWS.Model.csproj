@@ -78,6 +78,8 @@
     <Compile Include="QHAQFWSModel.cs" />
     <Compile Include="Station.cs" />
     <Compile Include="SyncDataQueue.cs" />
+    <Compile Include="Weather_D_SpiData.cs" />
+    <Compile Include="Weather_H_SpiData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

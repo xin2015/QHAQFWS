@@ -111,6 +111,7 @@
     <Compile Include="Sync\CityAirQualityHourlyPublishLiveDataSync.cs" />
     <Compile Include="Sync\CityAirQualityHourlySourceLiveDataSync.cs" />
     <Compile Include="Sync\CityAirQualityHourlySourceStandardDataSync.cs" />
+    <Compile Include="Sync\CityWeatherDailyDataSync.cs" />
     <Compile Include="Sync\QHDataService\AirQualityDataType.cs" />
     <Compile Include="Sync\StationAirQualityDailyApprovalLiveDataSync.cs" />
     <Compile Include="Sync\StationAirQualityDailyApprovalStandardDataSync.cs" />
@@ -122,6 +123,7 @@
     <Compile Include="Sync\StationAirQualityHourlyPublishLiveDataSync.cs" />
     <Compile Include="Sync\StationAirQualityHourlySourceLiveDataSync.cs" />
     <Compile Include="Sync\StationAirQualityHourlySourceStandardDataSync.cs" />
+    <Compile Include="Sync\CityWeatherHourlyDataSync.cs" />
     <Compile Include="Weather\IWeather.cs" />
   </ItemGroup>
   <ItemGroup>
