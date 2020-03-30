@@ -45,7 +45,9 @@ namespace QHAQFWS.Core.Sync
                         RelHumidity = src.RelHumidity,
                         Apparent = src.Apparent,
                         RainFall = src.RainFall,
-                        RainLevel = src.RainLevel
+                        RainLevel = src.RainLevel,
+                        HighTemperature = src.HighTemperature,
+                        LowTemperature = src.LowTemperature
                     };
                     list.Add(data);
                 }
