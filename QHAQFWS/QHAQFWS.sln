@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QHAQFWS.UnitTest", "QHAQFWS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QHAQFWS.WPF", "QHAQFWS.WPF\QHAQFWS.WPF.csproj", "{7EAC8C9D-C236-43FF-B33D-B8652ADCAE45}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QHAQFWS.Web", "QHAQFWS.Web\QHAQFWS.Web.csproj", "{21ABB267-6AB0-423D-97C6-61AF2F5AD3A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{7EAC8C9D-C236-43FF-B33D-B8652ADCAE45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EAC8C9D-C236-43FF-B33D-B8652ADCAE45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EAC8C9D-C236-43FF-B33D-B8652ADCAE45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21ABB267-6AB0-423D-97C6-61AF2F5AD3A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21ABB267-6AB0-423D-97C6-61AF2F5AD3A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21ABB267-6AB0-423D-97C6-61AF2F5AD3A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21ABB267-6AB0-423D-97C6-61AF2F5AD3A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
