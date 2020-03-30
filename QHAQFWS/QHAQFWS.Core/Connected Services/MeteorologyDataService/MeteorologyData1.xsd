@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ForecastDataSystem.WCF.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ForecastDataSystem.WCF.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfStationHourData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="StationHourData" nillable="true" type="tns:StationHourData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStationHourData" nillable="true" type="tns:ArrayOfStationHourData" />
+  <xs:complexType name="StationHourData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AQI" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Area" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CO_24h" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Longitude" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Measure" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NO2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NO2_24h" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="O3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="O3_24h" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="O3_8h" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="O3_8h_24h" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PM10" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PM10_24h" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PM2_5" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PM2_5_24h" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PositionName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PrimaryPollutant" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Quality" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SO2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SO2_24h" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StationCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TimePoint" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Unheathful" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StationHourData" nillable="true" type="tns:StationHourData" />
+  <xs:complexType name="ArrayOfCityHourData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CityHourData" nillable="true" type="tns:CityHourData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCityHourData" nillable="true" type="tns:ArrayOfCityHourData" />
+  <xs:complexType name="CityHourData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AQI" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Area" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CityCode" type="xs:int" />
+      <xs:element minOccurs="0" name="DescRankInCountry" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="DescRankInProvince" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Measure" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NO2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="O3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PM10" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PM2_5" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PrimaryPollutant" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Quality" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RankInCountry" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="RankInProvince" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="SO2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TimePoint" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Unheathful" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CityHourData" nillable="true" type="tns:CityHourData" />
+  <xs:complexType name="ArrayOfCityDayData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CityDayData" nillable="true" type="tns:CityDayData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCityDayData" nillable="true" type="tns:ArrayOfCityDayData" />
+  <xs:complexType name="CityDayData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AQI" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Area" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CO_24h" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CityCode" type="xs:int" />
+      <xs:element minOccurs="0" name="DescRankInCountry" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="DescRankInProvince" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Measure" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NO2_24h" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="O3_8h_24h" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PM10_24h" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PM2_5_24h" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PrimaryPollutant" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Quality" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RankInCountry" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="RankInProvince" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="SO2_24h" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TimePoint" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Unheathful" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CityDayData" nillable="true" type="tns:CityDayData" />
+</xs:schema>

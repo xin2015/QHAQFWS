@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{184563F5-55E3-43A6-81D1-14E3D667DF2F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QHAQFWS.Core</RootNamespace>
+    <AssemblyName>QHAQFWS.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Common.Logging, Version=3.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.3.3.1\lib\net40\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Core, Version=3.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.Core.3.3.1\lib\net40\Common.Logging.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Log4Net1215, Version=3.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.Log4Net1215.3.3.1\lib\net40\Common.Logging.Log4Net1215.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AirQuality\AirQualityCompositeIndexCalculate.cs" />
+    <Compile Include="AirQuality\AirQualityCompositeIndexCalculator.cs" />
+    <Compile Include="AirQuality\AirQualityIndexCalculate.cs" />
+    <Compile Include="AirQuality\AirQualityIndexCalculator.cs" />
+    <Compile Include="AirQuality\BaseAirQualityCalculator.cs" />
+    <Compile Include="AirQuality\DailyAirQualityIndexCalculator.cs" />
+    <Compile Include="AirQuality\HourlyAirQualityIndexCalculator.cs" />
+    <Compile Include="AirQuality\IAirQualityCompositeIndex.cs" />
+    <Compile Include="AirQuality\IAirQualityCompositeIndexCalculate.cs" />
+    <Compile Include="AirQuality\IAirQualityIndex.cs" />
+    <Compile Include="AirQuality\IAirQualityIndexCalculate.cs" />
+    <Compile Include="AirQuality\IAirQualityPollutantConcentration.cs" />
+    <Compile Include="AirQuality\IAirQualityPollutantIndex.cs" />
+    <Compile Include="Sync\CityAirQualityDailyApprovalLiveDataSync.cs" />
+    <Compile Include="Sync\CityAirQualityDailyApprovalStandardDataSync.cs" />
+    <Compile Include="Sync\CityAirQualityDailySourceLiveDataSync.cs" />
+    <Compile Include="Sync\CityAirQualityDailySourceStandardDataSync.cs" />
+    <Compile Include="Sync\CityAirQualityHourlyApprovalLiveDataSync.cs" />
+    <Compile Include="Connected Services\MeteorologyDataService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\QHDataService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sync\Base\ISync.cs" />
+    <Compile Include="Sync\Base\SyncBase.cs" />
+    <Compile Include="Sync\CityAirQualityDailyPublishLiveDataSync.cs" />
+    <Compile Include="Sync\CityAirQualityHourlyApprovalStandardDataSync.cs" />
+    <Compile Include="Sync\CityAirQualityHourlyPublishLiveDataSync.cs" />
+    <Compile Include="Sync\CityAirQualityHourlySourceLiveDataSync.cs" />
+    <Compile Include="Sync\CityAirQualityHourlySourceStandardDataSync.cs" />
+    <Compile Include="Sync\QHDataService\AirQualityDataType.cs" />
+    <Compile Include="Sync\StationAirQualityDailyApprovalLiveDataSync.cs" />
+    <Compile Include="Sync\StationAirQualityDailyApprovalStandardDataSync.cs" />
+    <Compile Include="Sync\StationAirQualityDailyPublishLiveDataSync.cs" />
+    <Compile Include="Sync\StationAirQualityDailySourceLiveDataSync.cs" />
+    <Compile Include="Sync\StationAirQualityDailySourceStandardDataSync.cs" />
+    <Compile Include="Sync\StationAirQualityHourlyApprovalLiveDataSync.cs" />
+    <Compile Include="Sync\StationAirQualityHourlyApprovalStandardDataSync.cs" />
+    <Compile Include="Sync\StationAirQualityHourlyPublishLiveDataSync.cs" />
+    <Compile Include="Sync\StationAirQualityHourlySourceLiveDataSync.cs" />
+    <Compile Include="Sync\StationAirQualityHourlySourceStandardDataSync.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\QHAQFWS.Basic\QHAQFWS.Basic.csproj">
+      <Project>{22066EC0-24A6-4781-B8B0-F257DAB3341A}</Project>
+      <Name>QHAQFWS.Basic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QHAQFWS.Model\QHAQFWS.Model.csproj">
+      <Project>{33758F52-B21E-4771-9B71-62ABA8CD9589}</Project>
+      <Name>QHAQFWS.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Connected Services\MeteorologyDataService\MeteorologyData.wsdl" />
+    <None Include="Connected Services\MeteorologyDataService\MeteorologyData.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\MeteorologyDataService\MeteorologyData1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\MeteorologyDataService\MeteorologyData2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\MeteorologyDataService\MeteorologyData3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\MeteorologyDataService\MeteorologyData4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\MeteorologyDataService\QHAQFWS.Core.MeteorologyDataService.Air_Cityday_AQI_Src.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MeteorologyDataService\QHAQFWS.Core.MeteorologyDataService.Air_day_AQI_Src.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MeteorologyDataService\QHAQFWS.Core.MeteorologyDataService.Air_hour_AQI_Src.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MeteorologyDataService\QHAQFWS.Core.MeteorologyDataService.CityDayData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MeteorologyDataService\QHAQFWS.Core.MeteorologyDataService.CityHourData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MeteorologyDataService\QHAQFWS.Core.MeteorologyDataService.City_WeatherForecastInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MeteorologyDataService\QHAQFWS.Core.MeteorologyDataService.GDMOTenDay_ForecastInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MeteorologyDataService\QHAQFWS.Core.MeteorologyDataService.ImageCommandConfig.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MeteorologyDataService\QHAQFWS.Core.MeteorologyDataService.ImageSpiQueue.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MeteorologyDataService\QHAQFWS.Core.MeteorologyDataService.NationCityPollutantForecast.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MeteorologyDataService\QHAQFWS.Core.MeteorologyDataService.NationProvincePollutantForecast.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MeteorologyDataService\QHAQFWS.Core.MeteorologyDataService.NMCCity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MeteorologyDataService\QHAQFWS.Core.MeteorologyDataService.StationHourData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MeteorologyDataService\QHAQFWS.Core.MeteorologyDataService.TrajectoryPic.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MeteorologyDataService\QHAQFWS.Core.MeteorologyDataService.Weather_D_SpiDatum.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MeteorologyDataService\QHAQFWS.Core.MeteorologyDataService.Weather_H_Forecast.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MeteorologyDataService\QHAQFWS.Core.MeteorologyDataService.Weather_H_SpiDatum.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MeteorologyDataService\QHAQFWS.Core.MeteorologyDataService.Weather_R_SpiDatum.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QHDataService\DataService.wsdl" />
+    <None Include="Connected Services\QHDataService\DataService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\QHDataService\DataService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\QHDataService\DataService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\QHDataService\DataService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\QHDataService\QHAQFWS.Core.QHDataService.CityDaily.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QHDataService\QHAQFWS.Core.QHDataService.CompositeType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QHDataService\QHAQFWS.Core.QHDataService.SiteDaily.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\MeteorologyDataService\" />
+    <WCFMetadataStorage Include="Connected Services\QHDataService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\MeteorologyDataService\MeteorologyData.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\MeteorologyDataService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\MeteorologyDataService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\MeteorologyDataService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\QHDataService\DataService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\QHDataService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\QHDataService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\QHDataService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

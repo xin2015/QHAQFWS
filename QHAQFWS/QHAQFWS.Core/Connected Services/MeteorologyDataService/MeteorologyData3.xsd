@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ForecastDataSystem.Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ForecastDataSystem.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfWeather_R_SpiDatum">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Weather_R_SpiDatum" nillable="true" type="tns:Weather_R_SpiDatum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWeather_R_SpiDatum" nillable="true" type="tns:ArrayOfWeather_R_SpiDatum" />
+  <xs:complexType name="Weather_R_SpiDatum">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AirPress" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="AirTemp" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Apparent" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CityCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ComLevel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Direction" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Info" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Power" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PubTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Rainfall" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="RelHumidity" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Speed" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WindDirection" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="WindSpeed" nillable="true" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Weather_R_SpiDatum" nillable="true" type="tns:Weather_R_SpiDatum" />
+  <xs:complexType name="ArrayOfWeather_H_SpiDatum">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Weather_H_SpiDatum" nillable="true" type="tns:Weather_H_SpiDatum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWeather_H_SpiDatum" nillable="true" type="tns:ArrayOfWeather_H_SpiDatum" />
+  <xs:complexType name="Weather_H_SpiDatum">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AirPress" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="AirTemperature" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Apparent" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CityCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="RainFall" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="RainLevel" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="RelHumidity" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TimePoint" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="WindDirection" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="WindSpeed" nillable="true" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Weather_H_SpiDatum" nillable="true" type="tns:Weather_H_SpiDatum" />
+  <xs:complexType name="ArrayOfWeather_D_SpiDatum">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Weather_D_SpiDatum" nillable="true" type="tns:Weather_D_SpiDatum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWeather_D_SpiDatum" nillable="true" type="tns:ArrayOfWeather_D_SpiDatum" />
+  <xs:complexType name="Weather_D_SpiDatum">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AirPress" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="AirTemperature" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Apparent" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CityCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="HighTemperature" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="LowTemperature" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="RainFall" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="RainLevel" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="RelHumidity" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TimePoint" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="WindDirection" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="WindSpeed" nillable="true" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Weather_D_SpiDatum" nillable="true" type="tns:Weather_D_SpiDatum" />
+  <xs:complexType name="ArrayOfWeather_H_Forecast">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Weather_H_Forecast" nillable="true" type="tns:Weather_H_Forecast" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWeather_H_Forecast" nillable="true" type="tns:ArrayOfWeather_H_Forecast" />
+  <xs:complexType name="Weather_H_Forecast">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AirPress" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="AirTemp" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CityCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CloundCover" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CreateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ForTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Rainfall" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="RelativeHumidity" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TimePoint" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Visibility" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="WeatherPhenomenon" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WindDirection" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="WindSpeed" nillable="true" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Weather_H_Forecast" nillable="true" type="tns:Weather_H_Forecast" />
+  <xs:complexType name="ArrayOfCity_WeatherForecastInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="City_WeatherForecastInfo" nillable="true" type="tns:City_WeatherForecastInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCity_WeatherForecastInfo" nillable="true" type="tns:ArrayOfCity_WeatherForecastInfo" />
+  <xs:complexType name="City_WeatherForecastInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AirPress" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="AirTemp" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CityCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CloundCover" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CreateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Day_AirTemp" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Day_Condition" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Day_WindDirection" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Day_WindSpeed" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ForTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Night_AirTemp" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Night_Condition" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Night_WindDirection" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Night_WindSpeed" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RainFall" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="RelativeHumidity" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TimePoint" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Visibility" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="WindDirection" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="WindSpeed" nillable="true" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="City_WeatherForecastInfo" nillable="true" type="tns:City_WeatherForecastInfo" />
+  <xs:complexType name="GDMOTenDay_ForecastInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ForecastInfo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Other" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TimePoint" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GDMOTenDay_ForecastInfo" nillable="true" type="tns:GDMOTenDay_ForecastInfo" />
+  <xs:complexType name="ArrayOfImageSpiQueue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ImageSpiQueue" nillable="true" type="tns:ImageSpiQueue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfImageSpiQueue" nillable="true" type="tns:ArrayOfImageSpiQueue" />
+  <xs:complexType name="ImageSpiQueue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FailReason" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FailTime" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FilePath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="ImageTypeCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ImageTypeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsBack" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsGif" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Order" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PlanSpiTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SuccessSpiTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TimePoint" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Url" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ImageSpiQueue" nillable="true" type="tns:ImageSpiQueue" />
+  <xs:complexType name="ImageCommandConfig">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AutoBackTime" type="xs:int" />
+      <xs:element minOccurs="0" name="FileType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HPa" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="ImageAttribute" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ImageTypeCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ImageTypeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsGif" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ListFormatter" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ListInterval" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ListInterval1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ListInterval1Critical" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ListMax" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ListMin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ListParameter" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Other" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PresentTimeFormatter" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PresentTimeParameter" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TimePointSystem" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UTC" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UrlFormatter" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UrlParameter" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ValidateTimeWidth" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ImageCommandConfig" nillable="true" type="tns:ImageCommandConfig" />
+  <xs:complexType name="ArrayOfTrajectoryPic">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TrajectoryPic" nillable="true" type="tns:TrajectoryPic" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTrajectoryPic" nillable="true" type="tns:ArrayOfTrajectoryPic" />
+  <xs:complexType name="TrajectoryPic">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CityCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FailReason" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FailTime" type="xs:int" />
+      <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FilePath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ForTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="ImageTypeCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ImageTypeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TimePoint" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Url" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TrajectoryPic" nillable="true" type="tns:TrajectoryPic" />
+  <xs:complexType name="ArrayOfNMCCity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="NMCCity" nillable="true" type="tns:NMCCity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfNMCCity" nillable="true" type="tns:ArrayOfNMCCity" />
+  <xs:complexType name="NMCCity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CityCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CityNamePY" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Lat" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Lon" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ProvinceAJC" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StationCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Trajectories" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NMCCity" nillable="true" type="tns:NMCCity" />
+  <xs:complexType name="ArrayOfNationCityPollutantForecast">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="NationCityPollutantForecast" nillable="true" type="tns:NationCityPollutantForecast" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfNationCityPollutantForecast" nillable="true" type="tns:ArrayOfNationCityPollutantForecast" />
+  <xs:complexType name="NationCityPollutantForecast">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AQIHigh" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AQILevel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AQILow" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AllowPublish" type="xs:boolean" />
+      <xs:element minOccurs="0" name="AuditDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CityCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DetailInfo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ForecastPerson" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ForecastType" type="xs:int" />
+      <xs:element minOccurs="0" name="HealthTips" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsPublish" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MapPaths" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NationCityPollutantForecastId" type="xs:int" />
+      <xs:element minOccurs="0" name="PrimaryPollutant" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PublishDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ReceiveTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="WarningInfo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NationCityPollutantForecast" nillable="true" type="tns:NationCityPollutantForecast" />
+  <xs:complexType name="ArrayOfNationProvincePollutantForecast">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="NationProvincePollutantForecast" nillable="true" type="tns:NationProvincePollutantForecast" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfNationProvincePollutantForecast" nillable="true" type="tns:ArrayOfNationProvincePollutantForecast" />
+  <xs:complexType name="NationProvincePollutantForecast">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AllowPublish" type="xs:boolean" />
+      <xs:element minOccurs="0" name="AuditDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ForecastDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ForecastPerson" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ForecastType" type="xs:int" />
+      <xs:element minOccurs="0" name="HealthTips" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsPublish" type="xs:boolean" />
+      <xs:element minOccurs="0" name="NationProvincePollutantForecastId" type="xs:int" />
+      <xs:element minOccurs="0" name="OtherDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProvinceCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PublishDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ReceiveTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TrendImage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WarningInfo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NationProvincePollutantForecast" nillable="true" type="tns:NationProvincePollutantForecast" />
+  <xs:complexType name="Air_hour_AQI_Src">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AQI" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Area" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CO" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CO_Mark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="NO2" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="NO2_Mark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="O3" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="O3_Mark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PM10" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PM10_Mark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PM2_5" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PM2_5_Mark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PrimaryPollutant" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SO2" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="SO2_Mark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StationCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TimePoint" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Air_hour_AQI_Src" nillable="true" type="tns:Air_hour_AQI_Src" />
+  <xs:complexType name="ArrayOfAir_hour_AQI_Src">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Air_hour_AQI_Src" nillable="true" type="tns:Air_hour_AQI_Src" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAir_hour_AQI_Src" nillable="true" type="tns:ArrayOfAir_hour_AQI_Src" />
+  <xs:complexType name="Air_day_AQI_Src">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AQI" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Area" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CO" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CO_Mark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="NO2" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="NO2_Mark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="O3" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="O3_8h" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="O3_8h_Mark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="O3_Mark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PM10" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PM10_Mark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PM2_5" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PM2_5_Mark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PrimaryPollutant" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SO2" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="SO2_Mark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StationCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TimePoint" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Air_day_AQI_Src" nillable="true" type="tns:Air_day_AQI_Src" />
+  <xs:complexType name="ArrayOfAir_day_AQI_Src">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Air_day_AQI_Src" nillable="true" type="tns:Air_day_AQI_Src" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAir_day_AQI_Src" nillable="true" type="tns:ArrayOfAir_day_AQI_Src" />
+  <xs:complexType name="Air_Cityday_AQI_Src">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AQI" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Area" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CO" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CO_Mark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CityCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="NO2" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="NO2_Mark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="O3" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="O3_8h" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="O3_8h_Mark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="O3_Mark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PM10" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PM10_Mark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PM2_5" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PM2_5_Mark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PrimaryPollutant" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SO2" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="SO2_Mark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TimePoint" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Air_Cityday_AQI_Src" nillable="true" type="tns:Air_Cityday_AQI_Src" />
+  <xs:complexType name="ArrayOfAir_Cityday_AQI_Src">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Air_Cityday_AQI_Src" nillable="true" type="tns:Air_Cityday_AQI_Src" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAir_Cityday_AQI_Src" nillable="true" type="tns:ArrayOfAir_Cityday_AQI_Src" />
+</xs:schema>

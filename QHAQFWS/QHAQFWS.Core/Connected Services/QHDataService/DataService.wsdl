@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="DataService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://221.207.21.89:8089/FreshWCF/DataService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://221.207.21.89:8089/FreshWCF/DataService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://221.207.21.89:8089/FreshWCF/DataService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SummerFresh.WCF" />
+      <xsd:import schemaLocation="http://221.207.21.89:8089/FreshWCF/DataService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/SummerFresh.WCF.Model" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IDataService_GetData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetData" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetDataUsingDataContract_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataUsingDataContract" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetDataUsingDataContract_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataUsingDataContractResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetSiteDailyData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSiteDailyData" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetSiteDailyData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSiteDailyDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetSiteHoursData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSiteHoursData" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetSiteHoursData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSiteHoursDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetCityDailyData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityDailyData" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetCityDailyData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityDailyDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetCityHoursData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityHoursData" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetCityHoursData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityHoursDataResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IDataService">
+    <wsdl:operation name="GetData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/GetData" message="tns:IDataService_GetData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/GetDataResponse" message="tns:IDataService_GetData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDataUsingDataContract">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/GetDataUsingDataContract" message="tns:IDataService_GetDataUsingDataContract_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/GetDataUsingDataContractResponse" message="tns:IDataService_GetDataUsingDataContract_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSiteDailyData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/GetSiteDailyData" message="tns:IDataService_GetSiteDailyData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/GetSiteDailyDataResponse" message="tns:IDataService_GetSiteDailyData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSiteHoursData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/GetSiteHoursData" message="tns:IDataService_GetSiteHoursData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/GetSiteHoursDataResponse" message="tns:IDataService_GetSiteHoursData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCityDailyData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/GetCityDailyData" message="tns:IDataService_GetCityDailyData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/GetCityDailyDataResponse" message="tns:IDataService_GetCityDailyData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCityHoursData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/GetCityHoursData" message="tns:IDataService_GetCityHoursData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/GetCityHoursDataResponse" message="tns:IDataService_GetCityHoursData_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IDataService" type="tns:IDataService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetData">
+      <soap:operation soapAction="http://tempuri.org/IDataService/GetData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataUsingDataContract">
+      <soap:operation soapAction="http://tempuri.org/IDataService/GetDataUsingDataContract" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSiteDailyData">
+      <soap:operation soapAction="http://tempuri.org/IDataService/GetSiteDailyData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSiteHoursData">
+      <soap:operation soapAction="http://tempuri.org/IDataService/GetSiteHoursData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityDailyData">
+      <soap:operation soapAction="http://tempuri.org/IDataService/GetCityDailyData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityHoursData">
+      <soap:operation soapAction="http://tempuri.org/IDataService/GetCityHoursData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DataService">
+    <wsdl:port name="BasicHttpBinding_IDataService" binding="tns:BasicHttpBinding_IDataService">
+      <soap:address location="http://221.207.21.89:8089/FreshWCF/DataService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

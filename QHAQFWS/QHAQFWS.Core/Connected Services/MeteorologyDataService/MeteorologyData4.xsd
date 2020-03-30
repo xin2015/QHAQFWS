@@ -1,0 +1,609 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://cityphoto.suncereltd.cn:18405/DataCenterWCF/MeteorologyData.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://cityphoto.suncereltd.cn:18405/DataCenterWCF/MeteorologyData.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ForecastDataSystem.Model" />
+  <xs:import schemaLocation="http://cityphoto.suncereltd.cn:18405/DataCenterWCF/MeteorologyData.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ForecastDataSystem.WCF.Models" />
+  <xs:element name="GetRealtimeSpiDataLast">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="cityCodes" nillable="true" type="q1:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRealtimeSpiDataLastResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ForecastDataSystem.Model" minOccurs="0" name="GetRealtimeSpiDataLastResult" nillable="true" type="q2:ArrayOfWeather_R_SpiDatum" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRealtimeSpiData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="cityCodes" nillable="true" type="q3:ArrayOfstring" />
+        <xs:element minOccurs="0" name="startTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="endTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRealtimeSpiDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ForecastDataSystem.Model" minOccurs="0" name="GetRealtimeSpiDataResult" nillable="true" type="q4:ArrayOfWeather_R_SpiDatum" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHourSpiDataLast">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="cityCodes" nillable="true" type="q5:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHourSpiDataLastResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ForecastDataSystem.Model" minOccurs="0" name="GetHourSpiDataLastResult" nillable="true" type="q6:ArrayOfWeather_H_SpiDatum" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHourSpiData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="cityCodes" nillable="true" type="q7:ArrayOfstring" />
+        <xs:element minOccurs="0" name="startTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="endTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHourSpiDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ForecastDataSystem.Model" minOccurs="0" name="GetHourSpiDataResult" nillable="true" type="q8:ArrayOfWeather_H_SpiDatum" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDaySpiDataLast">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="cityCodes" nillable="true" type="q9:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDaySpiDataLastResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/ForecastDataSystem.Model" minOccurs="0" name="GetDaySpiDataLastResult" nillable="true" type="q10:ArrayOfWeather_D_SpiDatum" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDaySpiData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="cityCodes" nillable="true" type="q11:ArrayOfstring" />
+        <xs:element minOccurs="0" name="startTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="endTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDaySpiDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/ForecastDataSystem.Model" minOccurs="0" name="GetDaySpiDataResult" nillable="true" type="q12:ArrayOfWeather_D_SpiDatum" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHourForecastData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="cityCodes" nillable="true" type="q13:ArrayOfstring" />
+        <xs:element minOccurs="0" name="startTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="endTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHourForecastDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/ForecastDataSystem.Model" minOccurs="0" name="GetHourForecastDataResult" nillable="true" type="q14:ArrayOfWeather_H_Forecast" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDayForecastData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="cityCodes" nillable="true" type="q15:ArrayOfstring" />
+        <xs:element minOccurs="0" name="startTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="endTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDayForecastDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/ForecastDataSystem.Model" minOccurs="0" name="GetDayForecastDataResult" nillable="true" type="q16:ArrayOfCity_WeatherForecastInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GDMOTenDaysForecastInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="timePoint" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GDMOTenDaysForecastInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/ForecastDataSystem.Model" minOccurs="0" name="GDMOTenDaysForecastInfoResult" nillable="true" type="q17:GDMOTenDay_ForecastInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetImageInfoData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="imageTypeCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="beginTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="endTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="fileType" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UTC" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="hPa" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetImageInfoDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/ForecastDataSystem.Model" minOccurs="0" name="GetImageInfoDataResult" nillable="true" type="q18:ArrayOfImageSpiQueue" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetImageAttribute">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="imageTypeCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetImageAttributeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetImageAttributeResult" nillable="true" type="q19:ArrayOfKeyValueOfstringArrayOfKeyValueOfstringstringty7Ep6D1" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetImageConfig">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="imageTypeCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetImageConfigResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/ForecastDataSystem.Model" minOccurs="0" name="GetImageConfigResult" nillable="true" type="q20:ImageCommandConfig" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTrajectoryPic">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="imageTypeCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="timePoint" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="cityCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTrajectoryPicResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/ForecastDataSystem.Model" minOccurs="0" name="GetTrajectoryPicResult" nillable="true" type="q21:ArrayOfTrajectoryPic" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCityList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cityName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCityListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/ForecastDataSystem.Model" minOccurs="0" name="GetCityListResult" nillable="true" type="q22:ArrayOfNMCCity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCityPollutantForecast">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="publishData" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCityPollutantForecastResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/ForecastDataSystem.Model" minOccurs="0" name="GetCityPollutantForecastResult" nillable="true" type="q23:ArrayOfNationCityPollutantForecast" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCityPollutantForecastBy">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="cityCodes" nillable="true" type="q24:ArrayOfstring" />
+        <xs:element minOccurs="0" name="publishDate" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCityPollutantForecastByResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/ForecastDataSystem.Model" minOccurs="0" name="GetCityPollutantForecastByResult" nillable="true" type="q25:ArrayOfNationCityPollutantForecast" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCityPollutantForecastList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="cityCodes" nillable="true" type="q26:ArrayOfstring" />
+        <xs:element minOccurs="0" name="startTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="endTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCityPollutantForecastListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/ForecastDataSystem.Model" minOccurs="0" name="GetCityPollutantForecastListResult" nillable="true" type="q27:ArrayOfNationCityPollutantForecast" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProvincePollutantForecast">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="publishData" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProvincePollutantForecastResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/ForecastDataSystem.Model" minOccurs="0" name="GetProvincePollutantForecastResult" nillable="true" type="q28:ArrayOfNationProvincePollutantForecast" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetImageQuantity">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetImageQuantityResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetImageQuantityResult" nillable="true" type="q29:ArrayOfKeyValueOfstringint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStationHourDataLive">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="timePoint" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStationHourDataLiveResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/ForecastDataSystem.WCF.Models" minOccurs="0" name="GetStationHourDataLiveResult" nillable="true" type="q30:ArrayOfStationHourData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStationHourDataLast">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStationHourDataLastResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/ForecastDataSystem.WCF.Models" minOccurs="0" name="GetStationHourDataLastResult" nillable="true" type="q31:ArrayOfStationHourData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStationHourDataHistory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="startTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="endTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStationHourDataHistoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/ForecastDataSystem.WCF.Models" minOccurs="0" name="GetStationHourDataHistoryResult" nillable="true" type="q32:ArrayOfStationHourData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStationHourData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="code" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="timePoint" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStationHourDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/ForecastDataSystem.WCF.Models" minOccurs="0" name="GetStationHourDataResult" nillable="true" type="q33:StationHourData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStationHourDataHistoryNew">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="codes" nillable="true" type="q34:ArrayOfstring" />
+        <xs:element minOccurs="0" name="startTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="endTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStationHourDataHistoryNewResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/ForecastDataSystem.WCF.Models" minOccurs="0" name="GetStationHourDataHistoryNewResult" nillable="true" type="q35:ArrayOfStationHourData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCityHourDataLive">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="timePoint" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCityHourDataLiveResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/ForecastDataSystem.WCF.Models" minOccurs="0" name="GetCityHourDataLiveResult" nillable="true" type="q36:ArrayOfCityHourData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCityHourDataLast">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCityHourDataLastResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/ForecastDataSystem.WCF.Models" minOccurs="0" name="GetCityHourDataLastResult" nillable="true" type="q37:ArrayOfCityHourData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCityHourDataHistory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="startTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="endTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCityHourDataHistoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/ForecastDataSystem.WCF.Models" minOccurs="0" name="GetCityHourDataHistoryResult" nillable="true" type="q38:ArrayOfCityHourData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCityHourData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="code" type="xs:int" />
+        <xs:element minOccurs="0" name="timePoint" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCityHourDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/ForecastDataSystem.WCF.Models" minOccurs="0" name="GetCityHourDataResult" nillable="true" type="q39:CityHourData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCityDayDataLive">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="timePoint" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCityDayDataLiveResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/ForecastDataSystem.WCF.Models" minOccurs="0" name="GetCityDayDataLiveResult" nillable="true" type="q40:ArrayOfCityDayData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCityDayDataLast">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCityDayDataLastResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/ForecastDataSystem.WCF.Models" minOccurs="0" name="GetCityDayDataLastResult" nillable="true" type="q41:ArrayOfCityDayData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCityDayDataHistory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="startTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="endTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCityDayDataHistoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/ForecastDataSystem.WCF.Models" minOccurs="0" name="GetCityDayDataHistoryResult" nillable="true" type="q42:ArrayOfCityDayData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCityDayData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="code" type="xs:int" />
+        <xs:element minOccurs="0" name="timePoint" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCityDayDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/ForecastDataSystem.WCF.Models" minOccurs="0" name="GetCityDayDataResult" nillable="true" type="q43:CityDayData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAir_hour_AQI_Src">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="code" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="time" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAir_hour_AQI_SrcResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/ForecastDataSystem.Model" minOccurs="0" name="GetAir_hour_AQI_SrcResult" nillable="true" type="q44:Air_hour_AQI_Src" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAir_hour_AQI_SrcList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="code" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="beginTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="endTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAir_hour_AQI_SrcListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/ForecastDataSystem.Model" minOccurs="0" name="GetAir_hour_AQI_SrcListResult" nillable="true" type="q45:ArrayOfAir_hour_AQI_Src" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAir_hour_AQI_SrcListByTime">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="time" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAir_hour_AQI_SrcListByTimeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/ForecastDataSystem.Model" minOccurs="0" name="GetAir_hour_AQI_SrcListByTimeResult" nillable="true" type="q46:ArrayOfAir_hour_AQI_Src" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAir_day_AQI_Src">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="code" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="time" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAir_day_AQI_SrcResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/ForecastDataSystem.Model" minOccurs="0" name="GetAir_day_AQI_SrcResult" nillable="true" type="q47:Air_day_AQI_Src" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAir_day_AQI_SrcList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="code" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="beginTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="endTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAir_day_AQI_SrcListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/ForecastDataSystem.Model" minOccurs="0" name="GetAir_day_AQI_SrcListResult" nillable="true" type="q48:ArrayOfAir_day_AQI_Src" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAir_day_AQI_SrcListByTime">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="time" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAir_day_AQI_SrcListByTimeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/ForecastDataSystem.Model" minOccurs="0" name="GetAir_day_AQI_SrcListByTimeResult" nillable="true" type="q49:ArrayOfAir_day_AQI_Src" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAir_Cityday_AQI_Src">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="code" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="time" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAir_Cityday_AQI_SrcResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/ForecastDataSystem.Model" minOccurs="0" name="GetAir_Cityday_AQI_SrcResult" nillable="true" type="q50:Air_Cityday_AQI_Src" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAir_Cityday_AQI_SrcList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="code" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="beginTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="endTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAir_Cityday_AQI_SrcListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/ForecastDataSystem.Model" minOccurs="0" name="GetAir_Cityday_AQI_SrcListResult" nillable="true" type="q51:ArrayOfAir_Cityday_AQI_Src" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAir_Cityday_AQI_SrcListByTime">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="time" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAir_Cityday_AQI_SrcListByTimeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/ForecastDataSystem.Model" minOccurs="0" name="GetAir_Cityday_AQI_SrcListByTimeResult" nillable="true" type="q52:ArrayOfAir_Cityday_AQI_Src" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

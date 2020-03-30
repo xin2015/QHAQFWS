@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="eb31de88-2182-4ef5-a5b5-9658ca424bb4" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://221.207.21.89:8089/FreshWCF/DataService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="DataService.xsd" MetadataType="Schema" ID="47148da2-874d-42a5-80c3-a98c1baaf51e" SourceId="1" SourceUrl="http://221.207.21.89:8089/FreshWCF/DataService.svc?xsd=xsd0" />
+    <MetadataFile FileName="DataService1.xsd" MetadataType="Schema" ID="0de1c655-2861-4acf-9054-be81026d3b7e" SourceId="1" SourceUrl="http://221.207.21.89:8089/FreshWCF/DataService.svc?xsd=xsd3" />
+    <MetadataFile FileName="DataService.wsdl" MetadataType="Wsdl" ID="84cd521f-bef7-4b7c-bf97-6f26e2be5d53" SourceId="1" SourceUrl="http://221.207.21.89:8089/FreshWCF/DataService.svc?wsdl" />
+    <MetadataFile FileName="DataService2.xsd" MetadataType="Schema" ID="907fe7db-1ffc-49e7-81c5-f9477e61b122" SourceId="1" SourceUrl="http://221.207.21.89:8089/FreshWCF/DataService.svc?xsd=xsd2" />
+    <MetadataFile FileName="DataService.disco" MetadataType="Disco" ID="95807a3c-9618-4500-8be0-906d2b122601" SourceId="1" SourceUrl="http://221.207.21.89:8089/FreshWCF/DataService.svc?disco" />
+    <MetadataFile FileName="DataService3.xsd" MetadataType="Schema" ID="40f3a761-29da-4e42-954d-346d20c9b3f7" SourceId="1" SourceUrl="http://221.207.21.89:8089/FreshWCF/DataService.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

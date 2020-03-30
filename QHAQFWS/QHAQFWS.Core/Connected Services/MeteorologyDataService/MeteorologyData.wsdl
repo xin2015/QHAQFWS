@@ -1,0 +1,801 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="MeteorologyData" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://cityphoto.suncereltd.cn:18405/DataCenterWCF/MeteorologyData.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://cityphoto.suncereltd.cn:18405/DataCenterWCF/MeteorologyData.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://cityphoto.suncereltd.cn:18405/DataCenterWCF/MeteorologyData.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://cityphoto.suncereltd.cn:18405/DataCenterWCF/MeteorologyData.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ForecastDataSystem.Model" />
+      <xsd:import schemaLocation="http://cityphoto.suncereltd.cn:18405/DataCenterWCF/MeteorologyData.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ForecastDataSystem.WCF.Models" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IMeteorologyData_GetRealtimeSpiDataLast_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRealtimeSpiDataLast" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetRealtimeSpiDataLast_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRealtimeSpiDataLastResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetRealtimeSpiData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRealtimeSpiData" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetRealtimeSpiData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRealtimeSpiDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetHourSpiDataLast_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHourSpiDataLast" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetHourSpiDataLast_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHourSpiDataLastResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetHourSpiData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHourSpiData" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetHourSpiData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHourSpiDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetDaySpiDataLast_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDaySpiDataLast" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetDaySpiDataLast_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDaySpiDataLastResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetDaySpiData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDaySpiData" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetDaySpiData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDaySpiDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetHourForecastData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHourForecastData" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetHourForecastData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHourForecastDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetDayForecastData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDayForecastData" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetDayForecastData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDayForecastDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GDMOTenDaysForecastInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GDMOTenDaysForecastInfo" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GDMOTenDaysForecastInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GDMOTenDaysForecastInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetImageInfoData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetImageInfoData" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetImageInfoData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetImageInfoDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetImageAttribute_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetImageAttribute" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetImageAttribute_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetImageAttributeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetImageConfig_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetImageConfig" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetImageConfig_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetImageConfigResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetTrajectoryPic_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTrajectoryPic" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetTrajectoryPic_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTrajectoryPicResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetCityList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityList" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetCityList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetCityPollutantForecast_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityPollutantForecast" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetCityPollutantForecast_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityPollutantForecastResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetCityPollutantForecastBy_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityPollutantForecastBy" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetCityPollutantForecastBy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityPollutantForecastByResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetCityPollutantForecastList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityPollutantForecastList" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetCityPollutantForecastList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityPollutantForecastListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetProvincePollutantForecast_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProvincePollutantForecast" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetProvincePollutantForecast_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProvincePollutantForecastResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetImageQuantity_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetImageQuantity" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetImageQuantity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetImageQuantityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetStationHourDataLive_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStationHourDataLive" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetStationHourDataLive_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStationHourDataLiveResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetStationHourDataLast_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStationHourDataLast" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetStationHourDataLast_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStationHourDataLastResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetStationHourDataHistory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStationHourDataHistory" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetStationHourDataHistory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStationHourDataHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetStationHourData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStationHourData" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetStationHourData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStationHourDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetStationHourDataHistoryNew_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStationHourDataHistoryNew" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetStationHourDataHistoryNew_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStationHourDataHistoryNewResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetCityHourDataLive_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityHourDataLive" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetCityHourDataLive_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityHourDataLiveResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetCityHourDataLast_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityHourDataLast" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetCityHourDataLast_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityHourDataLastResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetCityHourDataHistory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityHourDataHistory" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetCityHourDataHistory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityHourDataHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetCityHourData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityHourData" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetCityHourData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityHourDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetCityDayDataLive_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityDayDataLive" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetCityDayDataLive_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityDayDataLiveResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetCityDayDataLast_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityDayDataLast" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetCityDayDataLast_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityDayDataLastResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetCityDayDataHistory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityDayDataHistory" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetCityDayDataHistory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityDayDataHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetCityDayData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityDayData" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetCityDayData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityDayDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetAir_hour_AQI_Src_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAir_hour_AQI_Src" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetAir_hour_AQI_Src_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAir_hour_AQI_SrcResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetAir_hour_AQI_SrcList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAir_hour_AQI_SrcList" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetAir_hour_AQI_SrcList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAir_hour_AQI_SrcListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetAir_hour_AQI_SrcListByTime_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAir_hour_AQI_SrcListByTime" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetAir_hour_AQI_SrcListByTime_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAir_hour_AQI_SrcListByTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetAir_day_AQI_Src_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAir_day_AQI_Src" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetAir_day_AQI_Src_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAir_day_AQI_SrcResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetAir_day_AQI_SrcList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAir_day_AQI_SrcList" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetAir_day_AQI_SrcList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAir_day_AQI_SrcListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetAir_day_AQI_SrcListByTime_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAir_day_AQI_SrcListByTime" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetAir_day_AQI_SrcListByTime_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAir_day_AQI_SrcListByTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetAir_Cityday_AQI_Src_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAir_Cityday_AQI_Src" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetAir_Cityday_AQI_Src_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAir_Cityday_AQI_SrcResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetAir_Cityday_AQI_SrcList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAir_Cityday_AQI_SrcList" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetAir_Cityday_AQI_SrcList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAir_Cityday_AQI_SrcListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetAir_Cityday_AQI_SrcListByTime_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAir_Cityday_AQI_SrcListByTime" />
+  </wsdl:message>
+  <wsdl:message name="IMeteorologyData_GetAir_Cityday_AQI_SrcListByTime_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAir_Cityday_AQI_SrcListByTimeResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IMeteorologyData">
+    <wsdl:operation name="GetRealtimeSpiDataLast">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetRealtimeSpiDataLast" message="tns:IMeteorologyData_GetRealtimeSpiDataLast_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetRealtimeSpiDataLastResponse" message="tns:IMeteorologyData_GetRealtimeSpiDataLast_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRealtimeSpiData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetRealtimeSpiData" message="tns:IMeteorologyData_GetRealtimeSpiData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetRealtimeSpiDataResponse" message="tns:IMeteorologyData_GetRealtimeSpiData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHourSpiDataLast">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetHourSpiDataLast" message="tns:IMeteorologyData_GetHourSpiDataLast_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetHourSpiDataLastResponse" message="tns:IMeteorologyData_GetHourSpiDataLast_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHourSpiData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetHourSpiData" message="tns:IMeteorologyData_GetHourSpiData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetHourSpiDataResponse" message="tns:IMeteorologyData_GetHourSpiData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDaySpiDataLast">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetDaySpiDataLast" message="tns:IMeteorologyData_GetDaySpiDataLast_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetDaySpiDataLastResponse" message="tns:IMeteorologyData_GetDaySpiDataLast_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDaySpiData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetDaySpiData" message="tns:IMeteorologyData_GetDaySpiData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetDaySpiDataResponse" message="tns:IMeteorologyData_GetDaySpiData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHourForecastData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetHourForecastData" message="tns:IMeteorologyData_GetHourForecastData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetHourForecastDataResponse" message="tns:IMeteorologyData_GetHourForecastData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDayForecastData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetDayForecastData" message="tns:IMeteorologyData_GetDayForecastData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetDayForecastDataResponse" message="tns:IMeteorologyData_GetDayForecastData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GDMOTenDaysForecastInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GDMOTenDaysForecastInfo" message="tns:IMeteorologyData_GDMOTenDaysForecastInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GDMOTenDaysForecastInfoResponse" message="tns:IMeteorologyData_GDMOTenDaysForecastInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetImageInfoData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetImageInfoData" message="tns:IMeteorologyData_GetImageInfoData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetImageInfoDataResponse" message="tns:IMeteorologyData_GetImageInfoData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetImageAttribute">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetImageAttribute" message="tns:IMeteorologyData_GetImageAttribute_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetImageAttributeResponse" message="tns:IMeteorologyData_GetImageAttribute_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetImageConfig">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetImageConfig" message="tns:IMeteorologyData_GetImageConfig_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetImageConfigResponse" message="tns:IMeteorologyData_GetImageConfig_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTrajectoryPic">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetTrajectoryPic" message="tns:IMeteorologyData_GetTrajectoryPic_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetTrajectoryPicResponse" message="tns:IMeteorologyData_GetTrajectoryPic_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCityList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetCityList" message="tns:IMeteorologyData_GetCityList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetCityListResponse" message="tns:IMeteorologyData_GetCityList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCityPollutantForecast">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetCityPollutantForecast" message="tns:IMeteorologyData_GetCityPollutantForecast_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetCityPollutantForecastResponse" message="tns:IMeteorologyData_GetCityPollutantForecast_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCityPollutantForecastBy">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetCityPollutantForecastBy" message="tns:IMeteorologyData_GetCityPollutantForecastBy_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetCityPollutantForecastByResponse" message="tns:IMeteorologyData_GetCityPollutantForecastBy_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCityPollutantForecastList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetCityPollutantForecastList" message="tns:IMeteorologyData_GetCityPollutantForecastList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetCityPollutantForecastListResponse" message="tns:IMeteorologyData_GetCityPollutantForecastList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProvincePollutantForecast">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetProvincePollutantForecast" message="tns:IMeteorologyData_GetProvincePollutantForecast_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetProvincePollutantForecastResponse" message="tns:IMeteorologyData_GetProvincePollutantForecast_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetImageQuantity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetImageQuantity" message="tns:IMeteorologyData_GetImageQuantity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetImageQuantityResponse" message="tns:IMeteorologyData_GetImageQuantity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStationHourDataLive">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetStationHourDataLive" message="tns:IMeteorologyData_GetStationHourDataLive_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetStationHourDataLiveResponse" message="tns:IMeteorologyData_GetStationHourDataLive_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStationHourDataLast">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetStationHourDataLast" message="tns:IMeteorologyData_GetStationHourDataLast_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetStationHourDataLastResponse" message="tns:IMeteorologyData_GetStationHourDataLast_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStationHourDataHistory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetStationHourDataHistory" message="tns:IMeteorologyData_GetStationHourDataHistory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetStationHourDataHistoryResponse" message="tns:IMeteorologyData_GetStationHourDataHistory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStationHourData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetStationHourData" message="tns:IMeteorologyData_GetStationHourData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetStationHourDataResponse" message="tns:IMeteorologyData_GetStationHourData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStationHourDataHistoryNew">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetStationHourDataHistoryNew" message="tns:IMeteorologyData_GetStationHourDataHistoryNew_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetStationHourDataHistoryNewResponse" message="tns:IMeteorologyData_GetStationHourDataHistoryNew_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCityHourDataLive">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetCityHourDataLive" message="tns:IMeteorologyData_GetCityHourDataLive_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetCityHourDataLiveResponse" message="tns:IMeteorologyData_GetCityHourDataLive_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCityHourDataLast">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetCityHourDataLast" message="tns:IMeteorologyData_GetCityHourDataLast_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetCityHourDataLastResponse" message="tns:IMeteorologyData_GetCityHourDataLast_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCityHourDataHistory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetCityHourDataHistory" message="tns:IMeteorologyData_GetCityHourDataHistory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetCityHourDataHistoryResponse" message="tns:IMeteorologyData_GetCityHourDataHistory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCityHourData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetCityHourData" message="tns:IMeteorologyData_GetCityHourData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetCityHourDataResponse" message="tns:IMeteorologyData_GetCityHourData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCityDayDataLive">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetCityDayDataLive" message="tns:IMeteorologyData_GetCityDayDataLive_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetCityDayDataLiveResponse" message="tns:IMeteorologyData_GetCityDayDataLive_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCityDayDataLast">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetCityDayDataLast" message="tns:IMeteorologyData_GetCityDayDataLast_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetCityDayDataLastResponse" message="tns:IMeteorologyData_GetCityDayDataLast_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCityDayDataHistory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetCityDayDataHistory" message="tns:IMeteorologyData_GetCityDayDataHistory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetCityDayDataHistoryResponse" message="tns:IMeteorologyData_GetCityDayDataHistory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCityDayData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetCityDayData" message="tns:IMeteorologyData_GetCityDayData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetCityDayDataResponse" message="tns:IMeteorologyData_GetCityDayData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAir_hour_AQI_Src">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetAir_hour_AQI_Src" message="tns:IMeteorologyData_GetAir_hour_AQI_Src_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetAir_hour_AQI_SrcResponse" message="tns:IMeteorologyData_GetAir_hour_AQI_Src_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAir_hour_AQI_SrcList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetAir_hour_AQI_SrcList" message="tns:IMeteorologyData_GetAir_hour_AQI_SrcList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetAir_hour_AQI_SrcListResponse" message="tns:IMeteorologyData_GetAir_hour_AQI_SrcList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAir_hour_AQI_SrcListByTime">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetAir_hour_AQI_SrcListByTime" message="tns:IMeteorologyData_GetAir_hour_AQI_SrcListByTime_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetAir_hour_AQI_SrcListByTimeResponse" message="tns:IMeteorologyData_GetAir_hour_AQI_SrcListByTime_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAir_day_AQI_Src">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetAir_day_AQI_Src" message="tns:IMeteorologyData_GetAir_day_AQI_Src_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetAir_day_AQI_SrcResponse" message="tns:IMeteorologyData_GetAir_day_AQI_Src_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAir_day_AQI_SrcList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetAir_day_AQI_SrcList" message="tns:IMeteorologyData_GetAir_day_AQI_SrcList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetAir_day_AQI_SrcListResponse" message="tns:IMeteorologyData_GetAir_day_AQI_SrcList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAir_day_AQI_SrcListByTime">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetAir_day_AQI_SrcListByTime" message="tns:IMeteorologyData_GetAir_day_AQI_SrcListByTime_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetAir_day_AQI_SrcListByTimeResponse" message="tns:IMeteorologyData_GetAir_day_AQI_SrcListByTime_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAir_Cityday_AQI_Src">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetAir_Cityday_AQI_Src" message="tns:IMeteorologyData_GetAir_Cityday_AQI_Src_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetAir_Cityday_AQI_SrcResponse" message="tns:IMeteorologyData_GetAir_Cityday_AQI_Src_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAir_Cityday_AQI_SrcList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetAir_Cityday_AQI_SrcList" message="tns:IMeteorologyData_GetAir_Cityday_AQI_SrcList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetAir_Cityday_AQI_SrcListResponse" message="tns:IMeteorologyData_GetAir_Cityday_AQI_SrcList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAir_Cityday_AQI_SrcListByTime">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMeteorologyData/GetAir_Cityday_AQI_SrcListByTime" message="tns:IMeteorologyData_GetAir_Cityday_AQI_SrcListByTime_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMeteorologyData/GetAir_Cityday_AQI_SrcListByTimeResponse" message="tns:IMeteorologyData_GetAir_Cityday_AQI_SrcListByTime_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IMeteorologyData" type="tns:IMeteorologyData">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetRealtimeSpiDataLast">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetRealtimeSpiDataLast" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRealtimeSpiData">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetRealtimeSpiData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHourSpiDataLast">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetHourSpiDataLast" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHourSpiData">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetHourSpiData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDaySpiDataLast">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetDaySpiDataLast" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDaySpiData">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetDaySpiData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHourForecastData">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetHourForecastData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDayForecastData">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetDayForecastData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GDMOTenDaysForecastInfo">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GDMOTenDaysForecastInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetImageInfoData">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetImageInfoData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetImageAttribute">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetImageAttribute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetImageConfig">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetImageConfig" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTrajectoryPic">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetTrajectoryPic" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityList">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetCityList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityPollutantForecast">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetCityPollutantForecast" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityPollutantForecastBy">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetCityPollutantForecastBy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityPollutantForecastList">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetCityPollutantForecastList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProvincePollutantForecast">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetProvincePollutantForecast" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetImageQuantity">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetImageQuantity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStationHourDataLive">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetStationHourDataLive" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStationHourDataLast">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetStationHourDataLast" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStationHourDataHistory">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetStationHourDataHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStationHourData">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetStationHourData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStationHourDataHistoryNew">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetStationHourDataHistoryNew" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityHourDataLive">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetCityHourDataLive" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityHourDataLast">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetCityHourDataLast" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityHourDataHistory">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetCityHourDataHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityHourData">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetCityHourData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityDayDataLive">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetCityDayDataLive" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityDayDataLast">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetCityDayDataLast" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityDayDataHistory">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetCityDayDataHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityDayData">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetCityDayData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAir_hour_AQI_Src">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetAir_hour_AQI_Src" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAir_hour_AQI_SrcList">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetAir_hour_AQI_SrcList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAir_hour_AQI_SrcListByTime">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetAir_hour_AQI_SrcListByTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAir_day_AQI_Src">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetAir_day_AQI_Src" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAir_day_AQI_SrcList">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetAir_day_AQI_SrcList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAir_day_AQI_SrcListByTime">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetAir_day_AQI_SrcListByTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAir_Cityday_AQI_Src">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetAir_Cityday_AQI_Src" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAir_Cityday_AQI_SrcList">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetAir_Cityday_AQI_SrcList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAir_Cityday_AQI_SrcListByTime">
+      <soap:operation soapAction="http://tempuri.org/IMeteorologyData/GetAir_Cityday_AQI_SrcListByTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MeteorologyData">
+    <wsdl:port name="BasicHttpBinding_IMeteorologyData" binding="tns:BasicHttpBinding_IMeteorologyData">
+      <soap:address location="http://cityphoto.suncereltd.cn:18405/DataCenterWCF/MeteorologyData.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
