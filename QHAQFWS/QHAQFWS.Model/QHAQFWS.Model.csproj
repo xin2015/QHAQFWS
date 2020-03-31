@@ -74,6 +74,7 @@
     <Compile Include="Air_StationAQIHistory_H_Pub_Std.cs" />
     <Compile Include="Air_StationAQIHistory_H_Src.cs" />
     <Compile Include="Air_StationAQIHistory_H_Src_Std.cs" />
+    <Compile Include="City_WeatherForeastInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QHAQFWSModel.cs" />
     <Compile Include="Station.cs" />

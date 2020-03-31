@@ -40,6 +40,7 @@ namespace QHAQFWS.Model
         public virtual DbSet<SyncDataQueue> SyncDataQueue { get; set; }
         public virtual DbSet<Weather_H_SpiData> Weather_H_SpiData { get; set; }
         public virtual DbSet<Weather_D_SpiData> Weather_D_SpiData { get; set; }
+        public virtual DbSet<City_WeatherForeastInfo> City_WeatherForeastInfo { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
