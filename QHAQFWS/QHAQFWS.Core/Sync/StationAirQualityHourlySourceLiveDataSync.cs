@@ -18,17 +18,24 @@ namespace QHAQFWS.Core.Sync
             StationList = Model.Station.Where(o => o.Status && o.Area != "未知城市" && o.UniqueCode.StartsWith("63")).ToList();
         }
 
-        protected override void Sync(SyncDataQueue queue)
+        protected override DateTime GetTime()
         {
-            List<Air_StationAQIHistory_H_Src> list = GetSyncData(queue);
-            if (list.Count + 15 >= StationList.Count)
-            {
-                Model.Set<Air_StationAQIHistory_H_Src>().AddRange(list);
-            }
-            else
-            {
-                throw new Exception("数据获取失败！");
-            }
+            return DateTime.Today.AddHours(DateTime.Now.Hour);
+        }
+
+        protected override DateTime GetStartTime(DateTime time)
+        {
+            return time.AddMinutes(10);
+        }
+
+        protected override DateTime GetEndTime(DateTime time)
+        {
+            return time.AddYears(30);
+        }
+
+        protected override DateTime GetNextTime(DateTime time)
+        {
+            return time.AddHours(1);
         }
 
         protected override List<Air_StationAQIHistory_H_Src> GetSyncData(SyncDataQueue queue)
@@ -37,10 +44,11 @@ namespace QHAQFWS.Core.Sync
             using (DataServiceClient client = new DataServiceClient())
             {
                 SiteDaily[] srcList = client.GetSiteHoursData(queue.Time, queue.Time, (int)AirQualityDataType.SourceLive);
+                List<Air_StationAQIHistory_H_Src> existList = Model.Air_StationAQIHistory_H_Src.Where(o => o.TimePoint == queue.Time).ToList();
                 foreach (SiteDaily src in srcList)
                 {
                     Station station = StationList.FirstOrDefault(o => o.UniqueCode == src.SiteCode);
-                    if (station != null)
+                    if (station != null && !existList.Any(o => o.UniqueCode == station.UniqueCode))
                     {
                         Air_StationAQIHistory_H_Src data = new Air_StationAQIHistory_H_Src()
                         {
@@ -76,24 +84,9 @@ namespace QHAQFWS.Core.Sync
             return list;
         }
 
-        protected override DateTime GetTime()
+        protected override bool IsSynchronized(DateTime time)
         {
-            return DateTime.Today.AddHours(DateTime.Now.Hour);
-        }
-
-        protected override DateTime GetStartTime(DateTime time)
-        {
-            return time.AddMinutes(10);
-        }
-
-        protected override DateTime GetEndTime(DateTime time)
-        {
-            return time.AddYears(30);
-        }
-
-        protected override DateTime GetNextTime(DateTime time)
-        {
-            return time.AddHours(1);
+            return Model.Air_StationAQIHistory_H_Src.Count(o => o.TimePoint == time) + 15 > StationList.Count;
         }
     }
 }

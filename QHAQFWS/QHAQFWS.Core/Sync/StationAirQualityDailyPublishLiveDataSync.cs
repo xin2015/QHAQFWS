@@ -20,6 +20,11 @@ namespace QHAQFWS.Core.Sync
             StationList = Model.Station.Where(o => o.Status && o.Area != "未知城市").ToList();
         }
 
+        protected override DateTime GetEndTime(DateTime time)
+        {
+            return time.AddYears(30);
+        }
+
         protected override List<Air_StationAQIHistory_Day_Pub> GetSyncData(SyncDataQueue queue)
         {
             List<Air_StationAQIHistory_Day_Pub> list = new List<Air_StationAQIHistory_Day_Pub>();
@@ -68,9 +73,9 @@ namespace QHAQFWS.Core.Sync
             return list;
         }
 
-        protected override DateTime GetEndTime(DateTime time)
+        protected override bool IsSynchronized(DateTime time)
         {
-            return time.AddYears(30);
+            return Model.Air_StationAQIHistory_Day_Pub.FirstOrDefault(o => o.TimePoint == time) != null;
         }
     }
 }

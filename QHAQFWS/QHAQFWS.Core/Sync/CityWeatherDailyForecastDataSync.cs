@@ -25,44 +25,6 @@ namespace QHAQFWS.Core.Sync
             CityDic.Add("101150804", "海北藏族自治州");
         }
 
-        protected override List<City_WeatherForeastInfo> GetSyncData(SyncDataQueue queue)
-        {
-            List<City_WeatherForeastInfo> list = new List<City_WeatherForeastInfo>();
-            using (MeteorologyDataClient client = new MeteorologyDataClient())
-            {
-                City_WeatherForecastInfo[] srcList = client.GetDayForecastData(CityDic.Keys.ToArray(), queue.Time, queue.Time);
-                foreach (City_WeatherForecastInfo src in srcList)
-                {
-                    City_WeatherForeastInfo data = new City_WeatherForeastInfo()
-                    {
-                        Timepoint = src.TimePoint,
-                        ForTime = src.ForTime,
-                        CreateTime = DateTime.Now,
-                        CityName = CityDic[src.CityCode],
-                        CityCode = src.CityCode,
-                        WindDirection = src.WindDirection,
-                        WindSpeed = src.WindSpeed,
-                        AirPress = src.AirPress,
-                        AirTemp = src.AirTemp,
-                        High_AirTemp = src.Day_AirTemp,
-                        Low_High_AirTemp = src.Night_AirTemp,
-                        Day_Condition = src.Day_Condition,
-                        Night_Condition = src.Night_Condition,
-                        DayWindDirection = src.Day_WindDirection,
-                        NightWindDirection = src.Night_WindDirection,
-                        DayWindSpeed = src.Day_WindSpeed,
-                        NightWindSpeed = src.Night_WindSpeed,
-                        RelativeHumidity = src.RelativeHumidity,
-                        CloundCover = src.CloundCover,
-                        Visibility = src.Visibility,
-                        RainFall = src.RainFall
-                    };
-                    list.Add(data);
-                }
-            }
-            return list;
-        }
-
         protected override DateTime GetTime()
         {
             return DateTime.Today;
@@ -70,12 +32,59 @@ namespace QHAQFWS.Core.Sync
 
         protected override DateTime GetStartTime(DateTime time)
         {
-            return time.AddHours(6);
+            return time.AddHours(8);
         }
 
         protected override DateTime GetEndTime(DateTime time)
         {
             return time.AddYears(30);
+        }
+
+        protected override List<City_WeatherForeastInfo> GetSyncData(SyncDataQueue queue)
+        {
+            List<City_WeatherForeastInfo> list = new List<City_WeatherForeastInfo>();
+            using (MeteorologyDataClient client = new MeteorologyDataClient())
+            {
+                City_WeatherForecastInfo[] srcList = client.GetDayForecastData(CityDic.Keys.ToArray(), queue.Time, queue.Time);
+                List<City_WeatherForeastInfo> existList = Model.City_WeatherForeastInfo.Where(o => o.Timepoint == queue.Time).ToList();
+                foreach (City_WeatherForecastInfo src in srcList)
+                {
+                    if (!existList.Any(o => o.CityCode == src.CityCode && o.ForTime == src.ForTime))
+                    {
+                        City_WeatherForeastInfo data = new City_WeatherForeastInfo()
+                        {
+                            Timepoint = src.TimePoint,
+                            ForTime = src.ForTime,
+                            CreateTime = DateTime.Now,
+                            CityName = CityDic[src.CityCode],
+                            CityCode = src.CityCode,
+                            WindDirection = src.WindDirection,
+                            WindSpeed = src.WindSpeed,
+                            AirPress = src.AirPress,
+                            AirTemp = src.AirTemp,
+                            High_AirTemp = src.Day_AirTemp,
+                            Low_High_AirTemp = src.Night_AirTemp,
+                            Day_Condition = src.Day_Condition,
+                            Night_Condition = src.Night_Condition,
+                            DayWindDirection = src.Day_WindDirection,
+                            NightWindDirection = src.Night_WindDirection,
+                            DayWindSpeed = src.Day_WindSpeed,
+                            NightWindSpeed = src.Night_WindSpeed,
+                            RelativeHumidity = src.RelativeHumidity,
+                            CloundCover = src.CloundCover,
+                            Visibility = src.Visibility,
+                            RainFall = src.RainFall
+                        };
+                        list.Add(data);
+                    }
+                }
+            }
+            return list;
+        }
+
+        protected override bool IsSynchronized(DateTime time)
+        {
+            return Model.City_WeatherForeastInfo.Count(o => o.Timepoint == time) == CityDic.Count * 7;
         }
     }
 }

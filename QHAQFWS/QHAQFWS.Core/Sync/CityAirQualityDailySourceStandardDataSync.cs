@@ -17,6 +17,11 @@ namespace QHAQFWS.Core.Sync
 
         }
 
+        protected override DateTime GetEndTime(DateTime time)
+        {
+            return time.AddYears(30);
+        }
+
         protected override List<Air_CityAQIHistory_Day_Src_Std> GetSyncData(SyncDataQueue queue)
         {
             List<Air_CityAQIHistory_Day_Src_Std> list = new List<Air_CityAQIHistory_Day_Src_Std>();
@@ -50,9 +55,9 @@ namespace QHAQFWS.Core.Sync
             return list;
         }
 
-        protected override DateTime GetEndTime(DateTime time)
+        protected override bool IsSynchronized(DateTime time)
         {
-            return time.AddYears(30);
+            return Model.Air_CityAQIHistory_Day_Src_Std.FirstOrDefault(o => o.TimePoint == time) != null;
         }
     }
 }

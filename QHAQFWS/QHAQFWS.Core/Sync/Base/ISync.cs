@@ -8,9 +8,10 @@ namespace QHAQFWS.Core.Sync.Base
 {
     public interface ISync
     {
-        void Sync();
         void CheckQueue();
         void CheckQueue(DateTime time);
         void CheckQueue(DateTime startTime, DateTime endTime);
+        void Sync();
+        void Cover();
     }
 }

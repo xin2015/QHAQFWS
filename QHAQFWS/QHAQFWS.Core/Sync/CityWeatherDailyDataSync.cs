@@ -25,6 +25,16 @@ namespace QHAQFWS.Core.Sync
             CityDic.Add("101150804", "海北藏族自治州");
         }
 
+        protected override DateTime GetStartTime(DateTime time)
+        {
+            return time.AddDays(1).AddHours(8);
+        }
+
+        protected override DateTime GetEndTime(DateTime time)
+        {
+            return time.AddYears(30);
+        }
+
         protected override List<Weather_D_SpiData> GetSyncData(SyncDataQueue queue)
         {
             List<Weather_D_SpiData> list = new List<Weather_D_SpiData>();
@@ -55,14 +65,9 @@ namespace QHAQFWS.Core.Sync
             return list;
         }
 
-        protected override DateTime GetStartTime(DateTime time)
+        protected override bool IsSynchronized(DateTime time)
         {
-            return time.AddDays(1).AddHours(8);
-        }
-
-        protected override DateTime GetEndTime(DateTime time)
-        {
-            return time.AddYears(30);
+            return Model.Weather_D_SpiData.FirstOrDefault(o => o.TimePoint == time) != null;
         }
     }
 }

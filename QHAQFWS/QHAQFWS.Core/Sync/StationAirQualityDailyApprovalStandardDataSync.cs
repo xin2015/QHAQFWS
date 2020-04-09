@@ -18,17 +18,14 @@ namespace QHAQFWS.Core.Sync
             StationList = Model.Station.Where(o => o.Status && o.Area != "未知城市" && o.UniqueCode.StartsWith("63")).ToList();
         }
 
-        protected override void Sync(SyncDataQueue queue)
+        protected override DateTime GetStartTime(DateTime time)
         {
-            List<Air_StationAQIHistory_Day_App_Std> list = GetSyncData(queue);
-            if (list.Count + 15 >= StationList.Count)
-            {
-                Model.Set<Air_StationAQIHistory_Day_App_Std>().AddRange(list);
-            }
-            else
-            {
-                throw new Exception("数据获取失败！");
-            }
+            return time.AddDays(3);
+        }
+
+        protected override DateTime GetEndTime(DateTime time)
+        {
+            return time.AddYears(30);
         }
 
         protected override List<Air_StationAQIHistory_Day_App_Std> GetSyncData(SyncDataQueue queue)
@@ -37,10 +34,11 @@ namespace QHAQFWS.Core.Sync
             using (DataServiceClient client = new DataServiceClient())
             {
                 SiteDaily[] srcList = client.GetSiteDailyData(queue.Time, queue.Time, (int)AirQualityDataType.ApprovalStandard);
+                List<Air_StationAQIHistory_Day_App_Std> existList = Model.Air_StationAQIHistory_Day_App_Std.Where(o => o.TimePoint == queue.Time).ToList();
                 foreach (SiteDaily src in srcList)
                 {
                     Station station = StationList.FirstOrDefault(o => o.UniqueCode == src.SiteCode);
-                    if (station != null)
+                    if (station != null && !existList.Any(o => o.UniqueCode == station.UniqueCode))
                     {
                         Air_StationAQIHistory_Day_App_Std data = new Air_StationAQIHistory_Day_App_Std()
                         {
@@ -70,14 +68,9 @@ namespace QHAQFWS.Core.Sync
             return list;
         }
 
-        protected override DateTime GetStartTime(DateTime time)
+        protected override bool IsSynchronized(DateTime time)
         {
-            return time.AddDays(3);
-        }
-
-        protected override DateTime GetEndTime(DateTime time)
-        {
-            return time.AddYears(30);
+            return Model.Air_StationAQIHistory_Day_App_Std.Count(o => o.TimePoint == time) + 15 > StationList.Count;
         }
     }
 }
