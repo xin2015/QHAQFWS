@@ -41,6 +41,7 @@ namespace QHAQFWS.Model
         public virtual DbSet<Weather_H_SpiData> Weather_H_SpiData { get; set; }
         public virtual DbSet<Weather_D_SpiData> Weather_D_SpiData { get; set; }
         public virtual DbSet<City_WeatherForeastInfo> City_WeatherForeastInfo { get; set; }
+        public virtual DbSet<Tab_City_Result_Info_Publish> Tab_City_Result_Info_Publish { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

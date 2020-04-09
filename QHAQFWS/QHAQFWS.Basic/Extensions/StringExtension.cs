@@ -45,6 +45,24 @@ namespace QHAQFWS.Basic.Extensions
         }
 
         /// <summary>
+        /// 将数值字符串转换为可空int数值
+        /// </summary>
+        /// <param name="text">数值字符串</param>
+        /// <returns></returns>
+        public static int? ToNullableInt(this string text)
+        {
+            int value;
+            if (int.TryParse(text, out value))
+            {
+                return value;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
         /// 将数值字符串转换为可空double数值
         /// </summary>
         /// <param name="text">数值字符串</param>

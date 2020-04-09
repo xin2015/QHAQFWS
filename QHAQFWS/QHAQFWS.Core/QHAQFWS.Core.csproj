@@ -90,6 +90,7 @@
     <Compile Include="Forecast\BackPropagationLearningForecast.cs" />
     <Compile Include="Sync\CityAirQualityDailyApprovalLiveDataSync.cs" />
     <Compile Include="Sync\CityAirQualityDailyApprovalStandardDataSync.cs" />
+    <Compile Include="Sync\CityAirQualityDailyForecastCountryPublishDataSync.cs" />
     <Compile Include="Sync\CityAirQualityDailySourceLiveDataSync.cs" />
     <Compile Include="Sync\CityAirQualityDailySourceStandardDataSync.cs" />
     <Compile Include="Sync\CityAirQualityHourlyApprovalLiveDataSync.cs" />
