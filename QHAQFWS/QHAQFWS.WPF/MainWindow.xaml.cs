@@ -87,5 +87,28 @@ namespace QHAQFWS.WPF
                 ResultTextBox.Text = string.Format("CheckQueue failed.{0} {1}", DateTime.Now, ex.Message);
             }
         }
+
+        private void Cover_Button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                GetTime();
+                string modelName = ModelNameComboBox.Text;
+                using (QHAQFWSModel model = new QHAQFWSModel())
+                {
+                    Type[] types = Assembly.GetAssembly(typeof(ISync)).GetTypes();
+                    Type syncType = types.FirstOrDefault(o => o.Name == modelName);
+                    ISync sync = (ISync)Activator.CreateInstance(syncType, model);
+                    sync.CheckQueue(startTime, endTime);
+                    model.SaveChanges();
+                    sync.Cover();
+                }
+                ResultTextBox.Text = string.Format("Cover succeed.{0}", DateTime.Now);
+            }
+            catch (Exception ex)
+            {
+                ResultTextBox.Text = string.Format("Cover failed.{0} {1}", DateTime.Now, ex.Message);
+            }
+        }
     }
 }

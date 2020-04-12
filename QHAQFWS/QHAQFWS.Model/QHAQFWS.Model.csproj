@@ -74,11 +74,16 @@
     <Compile Include="Air_StationAQIHistory_H_Pub_Std.cs" />
     <Compile Include="Air_StationAQIHistory_H_Src.cs" />
     <Compile Include="Air_StationAQIHistory_H_Src_Std.cs" />
+    <Compile Include="City_Result_State.cs" />
     <Compile Include="City_WeatherForeastInfo.cs" />
+    <Compile Include="Forecast_Pollutant_Range.cs" />
+    <Compile Include="For_D_Air_City.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QHAQFWSModel.cs" />
+    <Compile Include="Regional_Code.cs" />
     <Compile Include="Station.cs" />
     <Compile Include="SyncDataQueue.cs" />
+    <Compile Include="Tab_City_Result_Info.cs" />
     <Compile Include="Tab_City_Result_Info_Publish.cs" />
     <Compile Include="Weather_D_SpiData.cs" />
     <Compile Include="Weather_H_SpiData.cs" />

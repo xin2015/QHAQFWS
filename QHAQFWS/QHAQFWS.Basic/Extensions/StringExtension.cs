@@ -93,6 +93,45 @@ namespace QHAQFWS.Basic.Extensions
             }
         }
 
+        public static int ToInt(this string text, int defaultValue)
+        {
+            int value;
+            if (int.TryParse(text, out value))
+            {
+                return value;
+            }
+            else
+            {
+                return defaultValue;
+            }
+        }
+
+        public static double ToDouble(this string text, double defaultValue)
+        {
+            double value;
+            if (double.TryParse(text, out value))
+            {
+                return value;
+            }
+            else
+            {
+                return defaultValue;
+            }
+        }
+
+        public static decimal ToDecimal(this string text, decimal defaultValue)
+        {
+            decimal value;
+            if (decimal.TryParse(text, out value))
+            {
+                return value;
+            }
+            else
+            {
+                return defaultValue;
+            }
+        }
+
         /// <summary>
         /// 将时间字符串转换为DateTime
         /// </summary>

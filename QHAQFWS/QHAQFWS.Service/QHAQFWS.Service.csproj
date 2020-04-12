@@ -57,6 +57,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -68,6 +69,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Jobs\CityAirQualityDailyForecastCountryPublishDataSyncJob.cs" />
     <Compile Include="Jobs\CommonSyncCheckJob.cs" />
     <Compile Include="Jobs\SyncJobBase.cs" />
     <Compile Include="Program.cs" />
@@ -84,6 +86,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\QHAQFWS.Basic\QHAQFWS.Basic.csproj">
+      <Project>{22066ec0-24a6-4781-b8b0-f257dab3341a}</Project>
+      <Name>QHAQFWS.Basic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\QHAQFWS.Core\QHAQFWS.Core.csproj">
       <Project>{184563F5-55E3-43A6-81D1-14E3D667DF2F}</Project>
       <Name>QHAQFWS.Core</Name>

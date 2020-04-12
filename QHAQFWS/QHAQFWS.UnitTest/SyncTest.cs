@@ -29,6 +29,18 @@ namespace QHAQFWS.UnitTest
                 }
             }
         }
+
+        [TestMethod]
+        public void CityAirQualityDailyForecastSourceDataSyncTest()
+        {
+            using (QHAQFWSModel model = new QHAQFWSModel())
+            {
+                CityAirQualityDailyForecastSourceDataSync sync = new CityAirQualityDailyForecastSourceDataSync(model);
+                sync.CheckQueue();
+                model.SaveChanges();
+                sync.Sync();
+            }
+        }
         #endregion
 
         #region Cover

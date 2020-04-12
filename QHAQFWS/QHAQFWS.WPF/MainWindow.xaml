@@ -40,7 +40,8 @@
         <Button Content="Sync" HorizontalAlignment="Left" Margin="217,141,0,0" VerticalAlignment="Top" Width="112" Click="Sync_Button_Click"/>
         <Label Content="Result：" HorizontalAlignment="Left" Margin="17,342,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="115,346,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="437" Name="ResultTextBox"/>
-        <Button Content="CheckQueue" HorizontalAlignment="Left" Margin="217,174,0,0" VerticalAlignment="Top" Width="112" Click="CheckQueue_Button_Click"/>
+        <Button Content="Cover" HorizontalAlignment="Left" Margin="217,174,0,0" VerticalAlignment="Top" Width="112" Click="Cover_Button_Click"/>
+        <Button Content="CheckQueue" HorizontalAlignment="Left" Margin="217,209,0,0" VerticalAlignment="Top" Width="112" Click="CheckQueue_Button_Click"/>
 
     </Grid>
 </Window>
