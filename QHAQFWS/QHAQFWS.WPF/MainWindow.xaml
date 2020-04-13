@@ -24,7 +24,7 @@
             <ComboBoxItem Content="CityAirQualityHourlySourceLiveDataSync" HorizontalAlignment="Left" Width="435"/>
             <ComboBoxItem Content="CityAirQualityHourlySourceStandardDataSync" HorizontalAlignment="Left" Width="435"/>
             <ComboBoxItem Content="CityWeatherDailyDataSync" HorizontalAlignment="Left" Width="435"/>
-            <ComboBoxItem Content="CityWeatherDialyForecastDataSync" HorizontalAlignment="Left" Width="435"/>
+            <ComboBoxItem Content="CityWeatherDailyForecastDataSync" HorizontalAlignment="Left" Width="435"/>
             <ComboBoxItem Content="CityWeatherHourlyDataSync" HorizontalAlignment="Left" Width="435"/>
             <ComboBoxItem Content="StationAirQualityDailyApprovalLiveDataSync" HorizontalAlignment="Left" Width="435"/>
             <ComboBoxItem Content="StationAirQualityDailyApprovalStandardDataSync" HorizontalAlignment="Left" Width="435"/>

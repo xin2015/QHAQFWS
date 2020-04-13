@@ -36,7 +36,7 @@ namespace QHAQFWS.UnitTest
             using (QHAQFWSModel model = new QHAQFWSModel())
             {
                 CityAirQualityDailyForecastSourceDataSync sync = new CityAirQualityDailyForecastSourceDataSync(model);
-                sync.CheckQueue();
+                sync.CheckQueue(new DateTime(2020, 4, 10), new DateTime(2020, 4, 12));
                 model.SaveChanges();
                 sync.Sync();
             }

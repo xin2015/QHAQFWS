@@ -5,6 +5,8 @@ using Suncere.StatisticModel;
 using Suncere.StatisticModel.ForecastModel;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,26 +41,32 @@ namespace QHAQFWS.Core.Sync
             List<For_D_Air_City> list = new List<For_D_Air_City>();
             foreach (Regional_Code regionalCode in regionalCodes)
             {
+                List<For_D_Air_City> tempList = new List<For_D_Air_City>();
                 if (!IsSynchronized(regionalCode.Area_Code, queue.Time, 2))
                 {
                     TongQi forecastModel = new TongQi(regionalCode.Area_Code, 30, 4, queue.Time, 15);
-                    list.AddRange(Predict(forecastModel));
+                    tempList.AddRange(Predict(forecastModel));
                 }
                 if (!IsSynchronized(regionalCode.Area_Code, queue.Time, 1))
                 {
                     DuoYuan forecastModel = new DuoYuan(regionalCode.Area_Code, 30, 4, queue.Time, 15);
-                    list.AddRange(Predict(forecastModel));
+                    tempList.AddRange(Predict(forecastModel));
                 }
                 if (!IsSynchronized(regionalCode.Area_Code, queue.Time, 3))
                 {
                     BPNet forecastModel = new BPNet(regionalCode.Area_Code, 40, 6, queue.Time, 15);
-                    list.AddRange(Predict(forecastModel));
+                    tempList.AddRange(Predict(forecastModel));
                 }
                 if (!IsSynchronized(regionalCode.Area_Code, queue.Time, 5))
                 {
                     JuLei forecastModel = new JuLei(regionalCode.Area_Code, 40, 4, queue.Time, 15);
-                    list.AddRange(Predict(forecastModel));
+                    tempList.AddRange(Predict(forecastModel));
                 }
+                if (!IsSynchronized(regionalCode.Area_Code, queue.Time, 0))
+                {
+                    tempList.AddRange(Predict(regionalCode.Area_Code, queue.Time, tempList));
+                }
+                list.AddRange(tempList);
             }
             return list;
         }
@@ -225,9 +233,33 @@ namespace QHAQFWS.Core.Sync
             return list;
         }
 
+        /// <summary>
+        /// 智能择优模型预报（暂时直接使用BP神经网络模型的结果，待后续修改）
+        /// </summary>
+        /// <param name="cityCode"></param>
+        /// <param name="time"></param>
+        /// <param name="otherList"></param>
+        /// <returns></returns>
+        protected virtual List<For_D_Air_City> Predict(string cityCode, DateTime time, List<For_D_Air_City> otherList)
+        {
+            List<For_D_Air_City> list = new List<For_D_Air_City>();
+            int forecastModelId = 0;
+            int forecastModelIdSelected = 3;
+            for (int i = 0; i < 15; i++)
+            {
+                DateTime forTime = time.AddDays(i);
+                For_D_Air_City selected = otherList.First(o => o.ForecastModelId == forecastModelIdSelected && o.ForTime == forTime);
+                For_D_Air_City data = new For_D_Air_City();
+                ReflectionHelper.Copy(data, selected, null);
+                data.ForecastModelId = forecastModelId;
+                list.Add(data);
+            }
+            return list;
+        }
+
         protected override bool IsSynchronized(DateTime time)
         {
-            return Model.For_D_Air_City.FirstOrDefault(o => o.TimePoint == time) != null;
+            return Model.For_D_Air_City.Count(o => o.TimePoint == time) >= regionalCodes.Count * 15 * 5;
         }
     }
 }
