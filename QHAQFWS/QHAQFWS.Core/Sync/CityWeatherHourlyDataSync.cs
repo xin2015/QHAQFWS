@@ -32,12 +32,7 @@ namespace QHAQFWS.Core.Sync
 
         protected override DateTime GetStartTime(DateTime time)
         {
-            return time.AddHours(1);
-        }
-
-        protected override DateTime GetEndTime(DateTime time)
-        {
-            return time.AddDays(15);
+            return time.AddMinutes(30);
         }
 
         protected override DateTime GetNextTime(DateTime time)

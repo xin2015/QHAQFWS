@@ -8,13 +8,15 @@
         Title="MainWindow" Height="409.776" Width="569.972">
     <Grid Margin="0,0,2,0">
         <Label Content="ModelName：" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Label Content="StartTime：" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.538,-1.316"/>
+        <Label Content="StartTime：" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top"/>
         <Label Content="EndTime：" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="108,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="437" Name="StartTimeTextBox"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="108,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="437" Name="EndTimeTextBox"/>
         <ComboBox HorizontalAlignment="Left" Margin="108,10,0,0" VerticalAlignment="Top" Width="437" Name="ModelNameComboBox">
             <ComboBoxItem Content="CityAirQualityDailyApprovalLiveDataSync" HorizontalAlignment="Left" Width="435"/>
             <ComboBoxItem Content="CityAirQualityDailyApprovalStandardDataSync" HorizontalAlignment="Left" Width="435"/>
+            <ComboBoxItem Content="CityAirQualityDailyForecastDataSync" HorizontalAlignment="Left" Width="435"/>
+            <ComboBoxItem Content="CityAirQualityDailyForecastPublishDataSync" HorizontalAlignment="Left" Width="435"/>
+            <ComboBoxItem Content="CityAirQualityDailyForecastSourceDataSync" HorizontalAlignment="Left" Width="435"/>
+            <ComboBoxItem Content="CityAirQualityDailyForecastStateDataSync" HorizontalAlignment="Left" Width="435"/>
             <ComboBoxItem Content="CityAirQualityDailyPublishLiveDataSync" HorizontalAlignment="Left" Width="435"/>
             <ComboBoxItem Content="CityAirQualityDailySourceLiveDataSync" HorizontalAlignment="Left" Width="435"/>
             <ComboBoxItem Content="CityAirQualityDailySourceStandardDataSync" HorizontalAlignment="Left" Width="435"/>
@@ -37,11 +39,12 @@
             <ComboBoxItem Content="StationAirQualityHourlySourceLiveDataSync" HorizontalAlignment="Left" Width="435"/>
             <ComboBoxItem Content="StationAirQualityHourlySourceStandardDataSync" HorizontalAlignment="Left" Width="435"/>
         </ComboBox>
-        <Button Content="Sync" HorizontalAlignment="Left" Margin="217,141,0,0" VerticalAlignment="Top" Width="112" Click="Sync_Button_Click"/>
-        <Label Content="Result：" HorizontalAlignment="Left" Margin="17,342,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="115,346,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="437" Name="ResultTextBox"/>
-        <Button Content="Cover" HorizontalAlignment="Left" Margin="217,174,0,0" VerticalAlignment="Top" Width="112" Click="Cover_Button_Click"/>
-        <Button Content="CheckQueue" HorizontalAlignment="Left" Margin="217,209,0,0" VerticalAlignment="Top" Width="112" Click="CheckQueue_Button_Click"/>
-
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="108,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="437" Name="StartTimeTextBox"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="108,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="437" Name="EndTimeTextBox"/>
+        <Button Content="Sync" HorizontalAlignment="Left" Margin="217,140,0,0" VerticalAlignment="Top" Width="112" Click="Sync_Button_Click"/>
+        <Button Content="Cover" HorizontalAlignment="Left" Margin="217,170,0,0" VerticalAlignment="Top" Width="112" Click="Cover_Button_Click"/>
+        <Button Content="CheckQueue" HorizontalAlignment="Left" Margin="217,200,0,0" VerticalAlignment="Top" Width="112" Click="CheckQueue_Button_Click"/>
+        <Label Content="Result：" HorizontalAlignment="Left" Margin="10,340,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="108,340,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="437" Name="ResultTextBox"/>
     </Grid>
 </Window>

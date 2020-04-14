@@ -18,11 +18,6 @@ namespace QHAQFWS.Core.Sync
             StationList = Model.Station.Where(o => o.Status && o.Area != "未知城市" && o.UniqueCode.StartsWith("63")).ToList();
         }
 
-        protected override DateTime GetEndTime(DateTime time)
-        {
-            return time.AddYears(30);
-        }
-
         protected override List<Air_StationAQIHistory_Day_Src> GetSyncData(SyncDataQueue queue)
         {
             List<Air_StationAQIHistory_Day_Src> list = new List<Air_StationAQIHistory_Day_Src>();

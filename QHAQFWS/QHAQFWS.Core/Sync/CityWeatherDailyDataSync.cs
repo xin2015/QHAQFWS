@@ -30,11 +30,6 @@ namespace QHAQFWS.Core.Sync
             return time.AddDays(1).AddHours(8);
         }
 
-        protected override DateTime GetEndTime(DateTime time)
-        {
-            return time.AddYears(30);
-        }
-
         protected override List<Weather_D_SpiData> GetSyncData(SyncDataQueue queue)
         {
             List<Weather_D_SpiData> list = new List<Weather_D_SpiData>();

@@ -22,11 +22,6 @@ namespace QHAQFWS.Core.Sync
             return time.AddDays(3);
         }
 
-        protected override DateTime GetEndTime(DateTime time)
-        {
-            return time.AddYears(30);
-        }
-
         protected override List<Air_CityAQIHistory_Day_App_Std> GetSyncData(SyncDataQueue queue)
         {
             List<Air_CityAQIHistory_Day_App_Std> list = new List<Air_CityAQIHistory_Day_App_Std>();

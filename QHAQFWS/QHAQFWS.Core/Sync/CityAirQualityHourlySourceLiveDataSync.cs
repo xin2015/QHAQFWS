@@ -27,11 +27,6 @@ namespace QHAQFWS.Core.Sync
             return time.AddMinutes(20);
         }
 
-        protected override DateTime GetEndTime(DateTime time)
-        {
-            return time.AddYears(30);
-        }
-
         protected override DateTime GetNextTime(DateTime time)
         {
             return time.AddHours(1);

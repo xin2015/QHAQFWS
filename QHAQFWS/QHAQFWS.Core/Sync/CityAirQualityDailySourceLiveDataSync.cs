@@ -17,11 +17,6 @@ namespace QHAQFWS.Core.Sync
 
         }
 
-        protected override DateTime GetEndTime(DateTime time)
-        {
-            return time.AddYears(30);
-        }
-
         protected override List<Air_CityAQIHistory_Day_Src> GetSyncData(SyncDataQueue queue)
         {
             return GetSyncDataTest(queue);

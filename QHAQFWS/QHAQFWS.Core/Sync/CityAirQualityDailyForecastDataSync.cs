@@ -23,7 +23,7 @@ namespace QHAQFWS.Core.Sync
 
         protected override DateTime GetStartTime(DateTime time)
         {
-            return time;
+            return time.AddHours(9);
         }
 
         protected override List<Tab_City_Result_Info> GetSyncData(SyncDataQueue queue)

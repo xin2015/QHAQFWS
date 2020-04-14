@@ -10,11 +10,27 @@ namespace QHAQFWS.Core.Sync.Base
 {
     public abstract class SyncBase<TEntity> : ISync where TEntity : class
     {
+        /// <summary>
+        /// 数据库实体类
+        /// </summary>
         protected QHAQFWSModel Model { get; set; }
+        /// <summary>
+        /// 数据名称
+        /// </summary>
         protected string ModelName { get; set; }
+        /// <summary>
+        /// 日志记录器
+        /// </summary>
         protected ILog Logger { get; set; }
+        /// <summary>
+        /// 空值字符串
+        /// </summary>
         protected string NullValueString { get; set; }
 
+        /// <summary>
+        /// 同步基类构造函数
+        /// </summary>
+        /// <param name="model">数据库实体类</param>
         public SyncBase(QHAQFWSModel model)
         {
             Model = model;
@@ -23,6 +39,9 @@ namespace QHAQFWS.Core.Sync.Base
             NullValueString = "—";
         }
 
+        /// <summary>
+        /// 检查同步队列
+        /// </summary>
         public virtual void CheckQueue()
         {
             DateTime time = GetTime();
@@ -38,6 +57,10 @@ namespace QHAQFWS.Core.Sync.Base
             return DateTime.Today.AddDays(-1);
         }
 
+        /// <summary>
+        /// 检查同步队列
+        /// </summary>
+        /// <param name="time">时间</param>
         public virtual void CheckQueue(DateTime time)
         {
             try
@@ -62,16 +85,31 @@ namespace QHAQFWS.Core.Sync.Base
             }
         }
 
+        /// <summary>
+        /// 获取同步开始时间
+        /// </summary>
+        /// <param name="time">时间</param>
+        /// <returns></returns>
         protected virtual DateTime GetStartTime(DateTime time)
         {
             return time.AddDays(1);
         }
 
+        /// <summary>
+        /// 获取同步结束时间
+        /// </summary>
+        /// <param name="time">时间</param>
+        /// <returns></returns>
         protected virtual DateTime GetEndTime(DateTime time)
         {
-            return time.AddDays(6);
+            return time.AddYears(10);
         }
 
+        /// <summary>
+        /// 检查同步队列
+        /// </summary>
+        /// <param name="startTime">开始时间</param>
+        /// <param name="endTime">结束时间</param>
         public virtual void CheckQueue(DateTime startTime, DateTime endTime)
         {
             for (DateTime time = startTime; time <= endTime; time = GetNextTime(time))
@@ -80,11 +118,19 @@ namespace QHAQFWS.Core.Sync.Base
             }
         }
 
+        /// <summary>
+        /// 获取下一次同步的时间
+        /// </summary>
+        /// <param name="time">时间</param>
+        /// <returns></returns>
         protected virtual DateTime GetNextTime(DateTime time)
         {
             return time.AddDays(1);
         }
 
+        /// <summary>
+        /// 同步
+        /// </summary>
         public virtual void Sync()
         {
             try
@@ -100,11 +146,19 @@ namespace QHAQFWS.Core.Sync.Base
             }
         }
 
+        /// <summary>
+        /// 获取最小同步时间（小于该时间的队列将不会继续同步）
+        /// </summary>
+        /// <returns></returns>
         protected virtual DateTime GetMinSyncTime()
         {
             return DateTime.Today.AddDays(-7);
         }
 
+        /// <summary>
+        /// 同步
+        /// </summary>
+        /// <param name="queues">同步队列</param>
         protected virtual void Sync(List<SyncDataQueue> queues)
         {
             foreach (SyncDataQueue queue in queues)
@@ -126,6 +180,10 @@ namespace QHAQFWS.Core.Sync.Base
             }
         }
 
+        /// <summary>
+        /// 同步数据
+        /// </summary>
+        /// <param name="queue">同步队列</param>
         protected virtual void SyncData(SyncDataQueue queue)
         {
             try
@@ -143,10 +201,23 @@ namespace QHAQFWS.Core.Sync.Base
             }
         }
 
+        /// <summary>
+        /// 获取同步数据
+        /// </summary>
+        /// <param name="queue">同步队列</param>
+        /// <returns></returns>
         protected abstract List<TEntity> GetSyncData(SyncDataQueue queue);
 
+        /// <summary>
+        /// 判断是否已完成同步
+        /// </summary>
+        /// <param name="time">时间</param>
+        /// <returns></returns>
         protected abstract bool IsSynchronized(DateTime time);
 
+        /// <summary>
+        /// 回补
+        /// </summary>
         public virtual void Cover()
         {
             try
@@ -162,6 +233,12 @@ namespace QHAQFWS.Core.Sync.Base
             }
         }
 
+        /// <summary>
+        /// 格式化
+        /// </summary>
+        /// <param name="value">数值</param>
+        /// <param name="multiplier">倍数</param>
+        /// <returns></returns>
         protected virtual string Format(string value, int multiplier)
         {
             string result;
@@ -184,6 +261,11 @@ namespace QHAQFWS.Core.Sync.Base
             return result;
         }
 
+        /// <summary>
+        /// 格式化
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         protected virtual string Format(string value)
         {
             return value.StartsWith("-") ? NullValueString : value;

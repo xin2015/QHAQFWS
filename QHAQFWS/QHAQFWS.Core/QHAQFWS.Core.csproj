@@ -49,6 +49,18 @@
     <Reference Include="Env.Cnemc.Assembly">
       <HintPath>..\customPackages\Env.Cnemc.Assembly.dll</HintPath>
     </Reference>
+    <Reference Include="Ivony.Core, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ivony.Core.1.1.1\lib\Ivony.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Ivony.Html, Version=3.0.12.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Jumony.Core.3.0.18\lib\Ivony.Html.dll</HintPath>
+    </Reference>
+    <Reference Include="Ivony.Html.Parser, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Jumony.Core.3.0.18\lib\Ivony.Html.Parser.dll</HintPath>
+    </Reference>
+    <Reference Include="Ivony.Html.Parser.Regulars, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Jumony.Core.3.0.18\lib\Ivony.Html.Parser.Regulars.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
     </Reference>
@@ -124,6 +136,7 @@
     <Compile Include="Sync\StationAirQualityHourlySourceStandardDataSync.cs" />
     <Compile Include="Sync\CityWeatherHourlyDataSync.cs" />
     <Compile Include="Weather\IWeather.cs" />
+    <Compile Include="Weather\NMCHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\QHAQFWS.Basic\QHAQFWS.Basic.csproj">

@@ -26,11 +26,6 @@ namespace QHAQFWS.Core.Sync
             return time.AddHours(10);
         }
 
-        protected override DateTime GetEndTime(DateTime time)
-        {
-            return time.AddYears(30);
-        }
-
         protected override List<Tab_City_Result_Info_Publish> GetSyncData(SyncDataQueue queue)
         {
             List<Tab_City_Result_Info_Publish> list = new List<Tab_City_Result_Info_Publish>();

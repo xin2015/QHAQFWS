@@ -78,60 +78,69 @@ namespace QHAQFWS.Core.Sync
 
         protected virtual List<For_D_Air_City> Predict(BaseStatisticModel forecastModel)
         {
-            List<Air_CityAQIHistory_Day_Pub> monitorAirQualityList = Model.Air_CityAQIHistory_Day_Pub.Where(o => o.CityCode.ToString() == forecastModel.Code && o.TimePoint >= forecastModel.BeginTime && o.TimePoint <= forecastModel.EndTime).ToList();
-            string cityName = regionalCodes.First(o => o.Area_Code == forecastModel.Code).Data_Value;
-            List<Weather_D_SpiData> monitorWeatherList = Model.Weather_D_SpiData.Where(o => o.CityName == cityName && o.TimePoint >= forecastModel.BeginTime && o.TimePoint <= forecastModel.EndTime).ToList();
-            List<City_WeatherForeastInfo> forecastWeatherList = Model.City_WeatherForeastInfo.Where(o => o.CityName == cityName && o.Timepoint == forecastModel.TimePoint).ToList();
-            for (int i = 0; i < 15; i++)
+            List<For_D_Air_City> list = new List<For_D_Air_City>();
+            try
             {
-                DateTime forecastDate = forecastModel.TimePoint.AddDays(i);
-                City_WeatherForeastInfo forecastWeather = forecastWeatherList.FirstOrDefault(o => o.ForTime == forecastDate);
-                if (forecastWeather == null)
+                List<Air_CityAQIHistory_Day_Pub> monitorAirQualityList = Model.Air_CityAQIHistory_Day_Pub.Where(o => o.CityCode.ToString() == forecastModel.Code && o.TimePoint >= forecastModel.BeginTime && o.TimePoint <= forecastModel.EndTime).ToList();
+                string cityName = regionalCodes.First(o => o.Area_Code == forecastModel.Code).Data_Value;
+                List<Weather_D_SpiData> monitorWeatherList = Model.Weather_D_SpiData.Where(o => o.CityName == cityName && o.TimePoint >= forecastModel.BeginTime && o.TimePoint <= forecastModel.EndTime).ToList();
+                List<City_WeatherForeastInfo> forecastWeatherList = Model.City_WeatherForeastInfo.Where(o => o.CityName == cityName && o.Timepoint == forecastModel.TimePoint).ToList();
+                for (int i = 0; i < 15; i++)
                 {
-                    City_WeatherForeastInfo forecastWeatherLast = forecastWeatherList.Last();
-                    forecastWeather = new City_WeatherForeastInfo()
+                    DateTime forecastDate = forecastModel.TimePoint.AddDays(i);
+                    City_WeatherForeastInfo forecastWeather = forecastWeatherList.FirstOrDefault(o => o.ForTime == forecastDate);
+                    if (forecastWeather == null)
                     {
-                        Timepoint = forecastWeatherLast.Timepoint,
-                        ForTime = forecastDate,
-                        CreateTime = DateTime.Now,
-                        CityName = forecastWeatherLast.CityName,
-                        CityCode = forecastWeatherLast.CityCode,
-                        WindDirection = forecastWeatherLast.WindDirection,
-                        WindSpeed = forecastWeatherLast.WindSpeed,
-                        AirPress = forecastWeatherLast.AirPress,
-                        AirTemp = forecastWeatherLast.AirTemp,
-                        High_AirTemp = forecastWeatherLast.High_AirTemp,
-                        Low_High_AirTemp = forecastWeatherLast.Low_High_AirTemp,
-                        Day_Condition = forecastWeatherLast.Day_Condition,
-                        Night_Condition = forecastWeatherLast.Night_Condition,
-                        DayWindDirection = forecastWeatherLast.DayWindDirection,
-                        NightWindDirection = forecastWeatherLast.NightWindDirection,
-                        DayWindSpeed = forecastWeatherLast.DayWindSpeed,
-                        NightWindSpeed = forecastWeatherLast.NightWindSpeed,
-                        RelativeHumidity = forecastWeatherLast.RelativeHumidity,
-                        CloundCover = forecastWeatherLast.CloundCover,
-                        Visibility = forecastWeatherLast.Visibility,
-                        RainFall = forecastWeatherLast.RainFall
-                    };
-                    forecastWeatherList.Add(forecastWeather);
+                        City_WeatherForeastInfo forecastWeatherLast = forecastWeatherList.Last();
+                        forecastWeather = new City_WeatherForeastInfo()
+                        {
+                            Timepoint = forecastWeatherLast.Timepoint,
+                            ForTime = forecastDate,
+                            CreateTime = DateTime.Now,
+                            CityName = forecastWeatherLast.CityName,
+                            CityCode = forecastWeatherLast.CityCode,
+                            WindDirection = forecastWeatherLast.WindDirection,
+                            WindSpeed = forecastWeatherLast.WindSpeed,
+                            AirPress = forecastWeatherLast.AirPress,
+                            AirTemp = forecastWeatherLast.AirTemp,
+                            High_AirTemp = forecastWeatherLast.High_AirTemp,
+                            Low_High_AirTemp = forecastWeatherLast.Low_High_AirTemp,
+                            Day_Condition = forecastWeatherLast.Day_Condition,
+                            Night_Condition = forecastWeatherLast.Night_Condition,
+                            DayWindDirection = forecastWeatherLast.DayWindDirection,
+                            NightWindDirection = forecastWeatherLast.NightWindDirection,
+                            DayWindSpeed = forecastWeatherLast.DayWindSpeed,
+                            NightWindSpeed = forecastWeatherLast.NightWindSpeed,
+                            RelativeHumidity = forecastWeatherLast.RelativeHumidity,
+                            CloundCover = forecastWeatherLast.CloundCover,
+                            Visibility = forecastWeatherLast.Visibility,
+                            RainFall = forecastWeatherLast.RainFall
+                        };
+                        forecastWeatherList.Add(forecastWeather);
+                    }
                 }
+
+                List<PollutantMonitorData> pollutantMonitorDataList = GetPollutantMonitorDataList(monitorAirQualityList);
+                List<WeatherMonitorData> weatherMonitorDataList = GetWeatherMonitorDataList(monitorWeatherList);
+                List<WeatherForecastData> weatherForecastDataList = ReflectionHelper.Copy<WeatherForecastData, City_WeatherForeastInfo>(forecastWeatherList, null);
+
+                //数据源及模型设置
+                forecastModel.IsAccordingNationStandard = true;     //按照总站标准计算AQI预报范围
+                forecastModel.PollutantMonitorList = pollutantMonitorDataList;
+                forecastModel.WeatherMonitorList = weatherMonitorDataList;
+                forecastModel.WeatherForecastList = weatherForecastDataList;
+                forecastModel.PollutantRangeList = rangeList;
+                forecastModel.AQILowRange = 20;
+                forecastModel.AQIHighRange = 35;
+
+                List<PollutantForecastData> pollutantForecastDataList = forecastModel.PredictOutPut();
+                list = GetFor_D_Air_CityList(pollutantForecastDataList);
             }
-
-            List<PollutantMonitorData> pollutantMonitorDataList = GetPollutantMonitorDataList(monitorAirQualityList);
-            List<WeatherMonitorData> weatherMonitorDataList = GetWeatherMonitorDataList(monitorWeatherList);
-            List<WeatherForecastData> weatherForecastDataList = ReflectionHelper.Copy<WeatherForecastData, City_WeatherForeastInfo>(forecastWeatherList, null);
-
-            //数据源及模型设置
-            forecastModel.IsAccordingNationStandard = true;     //按照总站标准计算AQI预报范围
-            forecastModel.PollutantMonitorList = pollutantMonitorDataList;
-            forecastModel.WeatherMonitorList = weatherMonitorDataList;
-            forecastModel.WeatherForecastList = weatherForecastDataList;
-            forecastModel.PollutantRangeList = rangeList;
-            forecastModel.AQILowRange = 20;
-            forecastModel.AQIHighRange = 35;
-
-            List<PollutantForecastData> pollutantForecastDataList = forecastModel.PredictOutPut();
-            return GetFor_D_Air_CityList(pollutantForecastDataList);
+            catch (Exception e)
+            {
+                Logger.DebugFormat("获取{0} {1} 模型{2}预报数据失败。", e, forecastModel.Code, forecastModel.TimePoint.ToString(""), forecastModel.ForecastModelId);
+            }
+            return list;
         }
 
         protected virtual List<PollutantMonitorData> GetPollutantMonitorDataList(List<Air_CityAQIHistory_Day_Pub> srcList)
@@ -243,16 +252,23 @@ namespace QHAQFWS.Core.Sync
         protected virtual List<For_D_Air_City> Predict(string cityCode, DateTime time, List<For_D_Air_City> otherList)
         {
             List<For_D_Air_City> list = new List<For_D_Air_City>();
-            int forecastModelId = 0;
-            int forecastModelIdSelected = 3;
-            for (int i = 0; i < 15; i++)
+            if (otherList.Any())
             {
-                DateTime forTime = time.AddDays(i);
-                For_D_Air_City selected = otherList.First(o => o.ForecastModelId == forecastModelIdSelected && o.ForTime == forTime);
-                For_D_Air_City data = new For_D_Air_City();
-                ReflectionHelper.Copy(data, selected, null);
-                data.ForecastModelId = forecastModelId;
-                list.Add(data);
+                int forecastModelId = 0;
+                int forecastModelIdSelected = 3;
+                if (!otherList.Any(o => o.ForecastModelId == forecastModelIdSelected))
+                {
+                    forecastModelIdSelected = otherList.First().ForecastModelId;
+                }
+                for (int i = 0; i < 15; i++)
+                {
+                    DateTime forTime = time.AddDays(i);
+                    For_D_Air_City selected = otherList.First(o => o.ForecastModelId == forecastModelIdSelected && o.ForTime == forTime);
+                    For_D_Air_City data = new For_D_Air_City();
+                    ReflectionHelper.Copy(data, selected, null);
+                    data.ForecastModelId = forecastModelId;
+                    list.Add(data);
+                }
             }
             return list;
         }
