@@ -42,6 +42,7 @@ namespace QHAQFWS.Model
         public virtual DbSet<Weather_D_SpiData> Weather_D_SpiData { get; set; }
         public virtual DbSet<City_WeatherForeastInfo> City_WeatherForeastInfo { get; set; }
         public virtual DbSet<For_D_Air_City> For_D_Air_City { get; set; }
+        public virtual DbSet<For_D_Air_Src> For_D_Air_Src { get; set; }
         public virtual DbSet<Tab_City_Result_Info> Tab_City_Result_Info { get; set; }
         public virtual DbSet<Tab_City_Result_Info_Publish> Tab_City_Result_Info_Publish { get; set; }
         public virtual DbSet<City_Result_State> City_Result_State { get; set; }
