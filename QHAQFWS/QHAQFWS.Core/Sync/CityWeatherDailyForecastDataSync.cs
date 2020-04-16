@@ -120,113 +120,117 @@ namespace QHAQFWS.Core.Sync
                 IHtmlDocument html = jp.LoadDocument(CityUrlDic[regionalCode.Data_Value], Encoding.UTF8);
                 if (html != null)
                 {
-                    #region 七天天气预报
-                    int day = 0;
-                    City_WeatherForeastInfo cityForecastData;
-                    foreach (IHtmlElement weatherDiv in html.FindFirst("#day7").Elements())
+                    string publishTimeString = html.FindFirst("#day7").PreviousElement().InnerText();
+                    if (publishTimeString == time.ToString(" 发布时间：MM-dd 08:00 "))
                     {
-                        cityForecastData = new City_WeatherForeastInfo();
-                        cityForecastData.CityCode = regionalCode.Area_Code;
-                        cityForecastData.CityName = regionalCode.Data_Value;
-                        cityForecastData.CreateTime = DateTime.Now;
-                        cityForecastData.Timepoint = time;
-                        cityForecastData.ForTime = DateTime.Today.AddDays(day++);
-                        cityForecastData.High_AirTemp = weatherDiv.FindFirst("div.tmp").InnerText().Replace("℃", string.Empty).ToNullableDecimal();
-                        cityForecastData.Low_High_AirTemp = weatherDiv.FindLast("div.tmp").InnerText().Replace("℃", string.Empty).ToNullableDecimal();
-                        cityForecastData.Day_Condition = weatherDiv.FindFirst("div.desc").InnerText().Trim();
-                        cityForecastData.Night_Condition = weatherDiv.FindLast("div.desc").InnerText().Trim();
-                        cityForecastData.DayWindDirection = NMCHelper.GetWindDirect(weatherDiv.FindFirst("div.windd").InnerText().Trim());
-                        cityForecastData.NightWindDirection = NMCHelper.GetWindDirect(weatherDiv.FindLast("div.windd").InnerText().Trim());
-                        cityForecastData.DayWindSpeed = weatherDiv.FindFirst("div.winds").InnerText().Trim();
-                        cityForecastData.NightWindSpeed = weatherDiv.FindLast("div.winds").InnerText().Trim();
-                        list.Add(cityForecastData);
-                    }
-                    #endregion
-                    #region 精细预报
-                    for (day = 0; day < 7; day++)
-                    {
-                        #region 小时预报
-                        List<City_WeatherForeastInfo> hourListForDay = new List<City_WeatherForeastInfo>();
-                        IHtmlElement dayDiv = html.FindFirst("#day" + day);
-                        DateTime beginTime = DateTime.Today;
-                        int hourIndex = 0;
-                        foreach (IHtmlElement hour3Div in dayDiv.Elements())
+                        #region 七天天气预报
+                        int day = 0;
+                        City_WeatherForeastInfo cityForecastData;
+                        foreach (IHtmlElement weatherDiv in html.FindFirst("#day7").Elements())
                         {
-                            IHtmlElement columnDiv = hour3Div.FindFirst("div");
-                            if (hourIndex == 0)
-                            {
-                                beginTime = DateTime.Parse(string.Format("{0} {1}", DateTime.Today.AddDays(day).ToShortDateString(), columnDiv.InnerText().Trim()));
-                            }
-                            City_WeatherForeastInfo hourData = new City_WeatherForeastInfo()
-                            {
-                                CityCode = regionalCode.Area_Code,
-                                CityName = regionalCode.Data_Value,
-                                Timepoint = time,
-                                CreateTime = DateTime.Now,
-                                ForTime = beginTime.AddHours(hourIndex * 3)
-                            };
-                            #region 天气现象
-                            columnDiv = columnDiv.NextElement();
-                            //天气概况显示为图片，暂不抓取 2020-03-24
-                            #endregion
-                            #region 降水
-                            columnDiv = columnDiv.NextElement();
-                            string rain = columnDiv.InnerText().Trim();
-                            if (rain == "-")
-                            {
-                                hourData.RainFall = 0;
-                            }
-                            else
-                            {
-                                hourData.RainFall = rain.Replace("mm", string.Empty).ToNullableDecimal();
-                            }
-                            #endregion
-                            #region 气温
-                            columnDiv = columnDiv.NextElement();
-                            hourData.AirTemp = columnDiv.InnerText().Trim().Replace("℃", string.Empty).ToNullableDecimal();
-                            #endregion
-                            #region 风速
-                            columnDiv = columnDiv.NextElement();
-                            hourData.WindSpeed = columnDiv.InnerText().Trim().Replace("m/s", string.Empty).ToNullableDecimal();
-                            #endregion
-                            #region 风向
-                            columnDiv = columnDiv.NextElement();
-                            hourData.WindDirection = NMCHelper.GetWindDirect(columnDiv.InnerText().Trim());
-                            #endregion
-                            #region 气压
-                            columnDiv = columnDiv.NextElement();
-                            hourData.AirPress = columnDiv.InnerText().Trim().Replace("hPa", string.Empty).ToNullableDecimal();
-                            #endregion
-                            #region 湿度
-                            columnDiv = columnDiv.NextElement();
-                            hourData.RelativeHumidity = columnDiv.InnerText().Trim().Replace("%", string.Empty).ToNullableDecimal();
-                            #endregion
-                            #region 云量
-                            columnDiv = columnDiv.NextElement();
-                            hourData.CloundCover = columnDiv.InnerText().Trim().Replace("%", string.Empty).ToNullableDecimal();
-                            #endregion
-                            hourListForDay.Add(hourData);
-                            hourIndex++;
+                            cityForecastData = new City_WeatherForeastInfo();
+                            cityForecastData.CityCode = regionalCode.Area_Code;
+                            cityForecastData.CityName = regionalCode.Data_Value;
+                            cityForecastData.CreateTime = DateTime.Now;
+                            cityForecastData.Timepoint = time;
+                            cityForecastData.ForTime = DateTime.Today.AddDays(day++);
+                            cityForecastData.High_AirTemp = weatherDiv.FindFirst("div.tmp").InnerText().Replace("℃", string.Empty).ToNullableDecimal();
+                            cityForecastData.Low_High_AirTemp = weatherDiv.FindLast("div.tmp").InnerText().Replace("℃", string.Empty).ToNullableDecimal();
+                            cityForecastData.Day_Condition = weatherDiv.FindFirst("div.desc").InnerText().Trim();
+                            cityForecastData.Night_Condition = weatherDiv.FindLast("div.desc").InnerText().Trim();
+                            cityForecastData.DayWindDirection = NMCHelper.GetWindDirect(weatherDiv.FindFirst("div.windd").InnerText().Trim());
+                            cityForecastData.NightWindDirection = NMCHelper.GetWindDirect(weatherDiv.FindLast("div.windd").InnerText().Trim());
+                            cityForecastData.DayWindSpeed = weatherDiv.FindFirst("div.winds").InnerText().Trim();
+                            cityForecastData.NightWindSpeed = weatherDiv.FindLast("div.winds").InnerText().Trim();
+                            list.Add(cityForecastData);
                         }
                         #endregion
-                        #region 日均预报
-                        City_WeatherForeastInfo forecastData = list.First(o => o.ForTime == beginTime.Date);
-                        forecastData.AirTemp = hourListForDay.Average(t => t.AirTemp).Round(1);
-                        forecastData.RainFall = hourListForDay.Sum(t => t.RainFall).Round(1);
-                        forecastData.AirPress = hourListForDay.Average(t => t.AirPress).Round(1);
-                        forecastData.RelativeHumidity = hourListForDay.Average(t => t.RelativeHumidity).Round(1);
-                        forecastData.CloundCover = hourListForDay.Average(t => t.CloundCover).Round(1);
-                        forecastData.Visibility = hourListForDay.Average(t => t.Visibility).Round(1);
-                        IEnumerable<City_WeatherForeastInfo> temp = hourListForDay.Where(o => o.WindDirection.HasValue && o.WindSpeed.HasValue);
-                        if (temp.Any())
+                        #region 精细预报
+                        for (day = 0; day < 7; day++)
                         {
-                            Vector avg = VectorHelper.Average(temp.Select(o => new Vector((double)o.WindDirection.Value, (double)o.WindSpeed.Value, false)));
-                            forecastData.WindDirection = (decimal)Math.Round(avg.GetDegree(), 1);
-                            forecastData.WindSpeed = (decimal)Math.Round(avg.Length, 1);
+                            #region 小时预报
+                            List<City_WeatherForeastInfo> hourListForDay = new List<City_WeatherForeastInfo>();
+                            IHtmlElement dayDiv = html.FindFirst("#day" + day);
+                            DateTime beginTime = DateTime.Today;
+                            int hourIndex = 0;
+                            foreach (IHtmlElement hour3Div in dayDiv.Elements())
+                            {
+                                IHtmlElement columnDiv = hour3Div.FindFirst("div");
+                                if (hourIndex == 0)
+                                {
+                                    beginTime = DateTime.Parse(string.Format("{0} {1}", DateTime.Today.AddDays(day).ToShortDateString(), columnDiv.InnerText().Trim()));
+                                }
+                                City_WeatherForeastInfo hourData = new City_WeatherForeastInfo()
+                                {
+                                    CityCode = regionalCode.Area_Code,
+                                    CityName = regionalCode.Data_Value,
+                                    Timepoint = time,
+                                    CreateTime = DateTime.Now,
+                                    ForTime = beginTime.AddHours(hourIndex * 3)
+                                };
+                                #region 天气现象
+                                columnDiv = columnDiv.NextElement();
+                                //天气概况显示为图片，暂不抓取 2020-03-24
+                                #endregion
+                                #region 降水
+                                columnDiv = columnDiv.NextElement();
+                                string rain = columnDiv.InnerText().Trim();
+                                if (rain == "-")
+                                {
+                                    hourData.RainFall = 0;
+                                }
+                                else
+                                {
+                                    hourData.RainFall = rain.Replace("mm", string.Empty).ToNullableDecimal();
+                                }
+                                #endregion
+                                #region 气温
+                                columnDiv = columnDiv.NextElement();
+                                hourData.AirTemp = columnDiv.InnerText().Trim().Replace("℃", string.Empty).ToNullableDecimal();
+                                #endregion
+                                #region 风速
+                                columnDiv = columnDiv.NextElement();
+                                hourData.WindSpeed = columnDiv.InnerText().Trim().Replace("m/s", string.Empty).ToNullableDecimal();
+                                #endregion
+                                #region 风向
+                                columnDiv = columnDiv.NextElement();
+                                hourData.WindDirection = NMCHelper.GetWindDirect(columnDiv.InnerText().Trim());
+                                #endregion
+                                #region 气压
+                                columnDiv = columnDiv.NextElement();
+                                hourData.AirPress = columnDiv.InnerText().Trim().Replace("hPa", string.Empty).ToNullableDecimal();
+                                #endregion
+                                #region 湿度
+                                columnDiv = columnDiv.NextElement();
+                                hourData.RelativeHumidity = columnDiv.InnerText().Trim().Replace("%", string.Empty).ToNullableDecimal();
+                                #endregion
+                                #region 云量
+                                columnDiv = columnDiv.NextElement();
+                                hourData.CloundCover = columnDiv.InnerText().Trim().Replace("%", string.Empty).ToNullableDecimal();
+                                #endregion
+                                hourListForDay.Add(hourData);
+                                hourIndex++;
+                            }
+                            #endregion
+                            #region 日均预报
+                            City_WeatherForeastInfo forecastData = list.First(o => o.ForTime == beginTime.Date);
+                            forecastData.AirTemp = hourListForDay.Average(t => t.AirTemp).Round(1);
+                            forecastData.RainFall = hourListForDay.Sum(t => t.RainFall).Round(1);
+                            forecastData.AirPress = hourListForDay.Average(t => t.AirPress).Round(1);
+                            forecastData.RelativeHumidity = hourListForDay.Average(t => t.RelativeHumidity).Round(1);
+                            forecastData.CloundCover = hourListForDay.Average(t => t.CloundCover).Round(1);
+                            forecastData.Visibility = hourListForDay.Average(t => t.Visibility).Round(1);
+                            IEnumerable<City_WeatherForeastInfo> temp = hourListForDay.Where(o => o.WindDirection.HasValue && o.WindSpeed.HasValue);
+                            if (temp.Any())
+                            {
+                                Vector avg = VectorHelper.Average(temp.Select(o => new Vector((double)o.WindDirection.Value, (double)o.WindSpeed.Value, false)));
+                                forecastData.WindDirection = (decimal)Math.Round(avg.GetDegree(), 1);
+                                forecastData.WindSpeed = (decimal)Math.Round(avg.Length, 1);
+                            }
+                            #endregion
                         }
                         #endregion
                     }
-                    #endregion
                 }
             }
             catch (Exception e)
