@@ -20,12 +20,12 @@ namespace QHAQFWS.Core.Sync
             StationList = Model.Station.Where(o => o.Status && o.Area != "未知城市").ToList();
         }
 
-        protected override List<Air_StationAQIHistory_Day_Pub> GetSyncData(SyncDataQueue queue)
+        protected override List<Air_StationAQIHistory_Day_Pub> GetSyncData(DateTime time)
         {
             List<Air_StationAQIHistory_Day_Pub> list = new List<Air_StationAQIHistory_Day_Pub>();
             using (MeteorologyDataClient client = new MeteorologyDataClient())
             {
-                StationHourData[] srcList = client.GetStationHourDataHistory(queue.Time.AddDays(1), queue.Time.AddDays(1));
+                StationHourData[] srcList = client.GetStationHourDataHistory(time.AddDays(1), time.AddDays(1));
                 foreach (StationHourData src in srcList)
                 {
                     Station station = Model.Station.FirstOrDefault(o => o.StationCode == src.StationCode);
@@ -33,7 +33,7 @@ namespace QHAQFWS.Core.Sync
                     {
                         Air_StationAQIHistory_Day_Pub data = new Air_StationAQIHistory_Day_Pub()
                         {
-                            TimePoint = queue.Time,
+                            TimePoint = time,
                             Area = station.Area,
                             CityCode = station.DistrictCode.Value,
                             UniqueCode = station.UniqueCode,
@@ -71,6 +71,15 @@ namespace QHAQFWS.Core.Sync
         protected override bool IsSynchronized(DateTime time)
         {
             return Model.Air_StationAQIHistory_Day_Pub.FirstOrDefault(o => o.TimePoint == time) != null;
+        }
+
+        protected override void RemoveData(DateTime time)
+        {
+            IQueryable<Air_StationAQIHistory_Day_Pub> list = Model.Air_StationAQIHistory_Day_Pub.Where(o => o.TimePoint == time);
+            if (list.Any())
+            {
+                Model.Air_StationAQIHistory_Day_Pub.RemoveRange(list);
+            }
         }
     }
 }

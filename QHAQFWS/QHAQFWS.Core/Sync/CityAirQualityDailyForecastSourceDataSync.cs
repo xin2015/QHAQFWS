@@ -36,35 +36,35 @@ namespace QHAQFWS.Core.Sync
             return time.AddHours(8);
         }
 
-        protected override List<For_D_Air_City> GetSyncData(SyncDataQueue queue)
+        protected override List<For_D_Air_City> GetSyncData(DateTime time)
         {
             List<For_D_Air_City> list = new List<For_D_Air_City>();
             foreach (Regional_Code regionalCode in regionalCodes)
             {
                 List<For_D_Air_City> tempList = new List<For_D_Air_City>();
-                if (!IsSynchronized(regionalCode.Area_Code, queue.Time, 2))
+                if (!IsSynchronized(regionalCode.Area_Code, time, 2))
                 {
-                    TongQi forecastModel = new TongQi(regionalCode.Area_Code, 30, 4, queue.Time, 15);
+                    TongQi forecastModel = new TongQi(regionalCode.Area_Code, 30, 4, time, 15);
                     tempList.AddRange(Predict(forecastModel));
                 }
-                if (!IsSynchronized(regionalCode.Area_Code, queue.Time, 1))
+                if (!IsSynchronized(regionalCode.Area_Code, time, 1))
                 {
-                    DuoYuan forecastModel = new DuoYuan(regionalCode.Area_Code, 30, 4, queue.Time, 15);
+                    DuoYuan forecastModel = new DuoYuan(regionalCode.Area_Code, 30, 4, time, 15);
                     tempList.AddRange(Predict(forecastModel));
                 }
-                if (!IsSynchronized(regionalCode.Area_Code, queue.Time, 3))
+                if (!IsSynchronized(regionalCode.Area_Code, time, 3))
                 {
-                    BPNet forecastModel = new BPNet(regionalCode.Area_Code, 40, 6, queue.Time, 15);
+                    BPNet forecastModel = new BPNet(regionalCode.Area_Code, 40, 6, time, 15);
                     tempList.AddRange(Predict(forecastModel));
                 }
-                if (!IsSynchronized(regionalCode.Area_Code, queue.Time, 5))
+                if (!IsSynchronized(regionalCode.Area_Code, time, 5))
                 {
-                    JuLei forecastModel = new JuLei(regionalCode.Area_Code, 40, 4, queue.Time, 15);
+                    JuLei forecastModel = new JuLei(regionalCode.Area_Code, 40, 4, time, 15);
                     tempList.AddRange(Predict(forecastModel));
                 }
-                if (!IsSynchronized(regionalCode.Area_Code, queue.Time, 0))
+                if (!IsSynchronized(regionalCode.Area_Code, time, 0))
                 {
-                    tempList.AddRange(Predict(regionalCode.Area_Code, queue.Time, tempList));
+                    tempList.AddRange(Predict(regionalCode.Area_Code, time, tempList));
                 }
                 list.AddRange(tempList);
             }
@@ -276,6 +276,15 @@ namespace QHAQFWS.Core.Sync
         protected override bool IsSynchronized(DateTime time)
         {
             return Model.For_D_Air_City.Count(o => o.TimePoint == time) >= regionalCodes.Count * 15 * 5;
+        }
+
+        protected override void RemoveData(DateTime time)
+        {
+            IQueryable<For_D_Air_City> list = Model.For_D_Air_City.Where(o => o.TimePoint == time);
+            if (list.Any())
+            {
+                Model.For_D_Air_City.RemoveRange(list);
+            }
         }
     }
 }

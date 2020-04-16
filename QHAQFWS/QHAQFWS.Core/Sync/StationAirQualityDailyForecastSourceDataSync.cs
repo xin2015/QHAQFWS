@@ -38,35 +38,35 @@ namespace QHAQFWS.Core.Sync
             return time.AddHours(8);
         }
 
-        protected override List<For_D_Air_Src> GetSyncData(SyncDataQueue queue)
+        protected override List<For_D_Air_Src> GetSyncData(DateTime time)
         {
             List<For_D_Air_Src> list = new List<For_D_Air_Src>();
             foreach (Station station in stationList)
             {
                 List<For_D_Air_Src> tempList = new List<For_D_Air_Src>();
-                if (!IsSynchronized(station.UniqueCode, queue.Time, 2))
+                if (!IsSynchronized(station.UniqueCode, time, 2))
                 {
-                    TongQi forecastModel = new TongQi(station.UniqueCode, 30, 4, queue.Time, 15);
+                    TongQi forecastModel = new TongQi(station.UniqueCode, 30, 4, time, 15);
                     tempList.AddRange(Predict(forecastModel, station));
                 }
-                if (!IsSynchronized(station.UniqueCode, queue.Time, 1))
+                if (!IsSynchronized(station.UniqueCode, time, 1))
                 {
-                    DuoYuan forecastModel = new DuoYuan(station.UniqueCode, 30, 4, queue.Time, 15);
+                    DuoYuan forecastModel = new DuoYuan(station.UniqueCode, 30, 4, time, 15);
                     tempList.AddRange(Predict(forecastModel, station));
                 }
-                if (!IsSynchronized(station.UniqueCode, queue.Time, 3))
+                if (!IsSynchronized(station.UniqueCode, time, 3))
                 {
-                    BPNet forecastModel = new BPNet(station.UniqueCode, 40, 6, queue.Time, 15);
+                    BPNet forecastModel = new BPNet(station.UniqueCode, 40, 6, time, 15);
                     tempList.AddRange(Predict(forecastModel, station));
                 }
-                if (!IsSynchronized(station.UniqueCode, queue.Time, 5))
+                if (!IsSynchronized(station.UniqueCode, time, 5))
                 {
-                    JuLei forecastModel = new JuLei(station.UniqueCode, 40, 4, queue.Time, 15);
+                    JuLei forecastModel = new JuLei(station.UniqueCode, 40, 4, time, 15);
                     tempList.AddRange(Predict(forecastModel, station));
                 }
-                if (!IsSynchronized(station.UniqueCode, queue.Time, 0))
+                if (!IsSynchronized(station.UniqueCode, time, 0))
                 {
-                    tempList.AddRange(Predict(station.UniqueCode, queue.Time, tempList));
+                    tempList.AddRange(Predict(station.UniqueCode, time, tempList));
                 }
                 list.AddRange(tempList);
             }
@@ -312,6 +312,15 @@ namespace QHAQFWS.Core.Sync
         protected override bool IsSynchronized(DateTime time)
         {
             return Model.For_D_Air_Src.Count(o => o.TimePoint == time) >= stationList.Count * 15 * 5;
+        }
+
+        protected override void RemoveData(DateTime time)
+        {
+            IQueryable<For_D_Air_Src> list = Model.For_D_Air_Src.Where(o => o.TimePoint == time);
+            if (list.Any())
+            {
+                Model.For_D_Air_Src.RemoveRange(list);
+            }
         }
     }
 }

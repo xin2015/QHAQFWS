@@ -17,22 +17,22 @@ namespace QHAQFWS.Core.Sync
 
         }
 
-        protected override List<Air_CityAQIHistory_Day_Src> GetSyncData(SyncDataQueue queue)
+        protected override List<Air_CityAQIHistory_Day_Src> GetSyncData(DateTime time)
         {
-            return GetSyncDataTest(queue);
+            return GetSyncDataTest(time);
         }
 
-        protected virtual List<Air_CityAQIHistory_Day_Src> GetSyncDataReal(SyncDataQueue queue)
+        protected virtual List<Air_CityAQIHistory_Day_Src> GetSyncDataReal(DateTime time)
         {
             List<Air_CityAQIHistory_Day_Src> list = new List<Air_CityAQIHistory_Day_Src>();
             using (DataServiceClient client = new DataServiceClient())
             {
-                CityDaily[] srcList = client.GetCityDailyData(queue.Time, queue.Time, (int)AirQualityDataType.SourceLive);
+                CityDaily[] srcList = client.GetCityDailyData(time, time, (int)AirQualityDataType.SourceLive);
                 foreach (CityDaily src in srcList)
                 {
                     Air_CityAQIHistory_Day_Src data = new Air_CityAQIHistory_Day_Src()
                     {
-                        TimePoint = queue.Time,
+                        TimePoint = time,
                         Area = src.CityName,
                         CityCode = Convert.ToInt32(src.CityCode),
                         SO2_24h = Format(src.SO2, 1000),
@@ -55,18 +55,18 @@ namespace QHAQFWS.Core.Sync
             return list;
         }
 
-        protected virtual List<Air_CityAQIHistory_Day_Src> GetSyncDataTest(SyncDataQueue queue)
+        protected virtual List<Air_CityAQIHistory_Day_Src> GetSyncDataTest(DateTime time)
         {
             List<Air_CityAQIHistory_Day_Src> list = new List<Air_CityAQIHistory_Day_Src>();
             using (DataServiceClient client = new DataServiceClient())
             {
-                SiteDaily[] srcList = client.GetSiteDailyData(queue.Time, queue.Time, (int)AirQualityDataType.SourceLive);
+                SiteDaily[] srcList = client.GetSiteDailyData(time, time, (int)AirQualityDataType.SourceLive);
                 foreach (var areaGroup in srcList.GroupBy(o => o.Area))
                 {
                     SiteDaily src = areaGroup.First();
                     Air_CityAQIHistory_Day_Src data = new Air_CityAQIHistory_Day_Src()
                     {
-                        TimePoint = queue.Time,
+                        TimePoint = time,
                         Area = src.Area,
                         CityCode = Convert.ToInt32(src.AreaCode),
                         SO2_24h = Format(src.SO2, 1000),
@@ -92,6 +92,15 @@ namespace QHAQFWS.Core.Sync
         protected override bool IsSynchronized(DateTime time)
         {
             return Model.Air_CityAQIHistory_Day_Src.FirstOrDefault(o => o.TimePoint == time) != null;
+        }
+
+        protected override void RemoveData(DateTime time)
+        {
+            IQueryable<Air_CityAQIHistory_Day_Src> list = Model.Air_CityAQIHistory_Day_Src.Where(o => o.TimePoint == time);
+            if (list.Any())
+            {
+                Model.Air_CityAQIHistory_Day_Src.RemoveRange(list);
+            }
         }
     }
 }

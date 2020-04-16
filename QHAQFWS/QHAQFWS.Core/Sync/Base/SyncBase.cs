@@ -165,7 +165,7 @@ namespace QHAQFWS.Core.Sync.Base
             {
                 try
                 {
-                    SyncData(queue);
+                    SyncData(queue.Time);
                     if (IsSynchronized(queue.Time))
                     {
                         queue.Status = true;
@@ -184,11 +184,11 @@ namespace QHAQFWS.Core.Sync.Base
         /// 同步数据
         /// </summary>
         /// <param name="queue">同步队列</param>
-        protected virtual void SyncData(SyncDataQueue queue)
+        protected virtual void SyncData(DateTime time)
         {
             try
             {
-                List<TEntity> list = GetSyncData(queue);
+                List<TEntity> list = GetSyncData(time);
                 if (list.Any())
                 {
                     Model.Set<TEntity>().AddRange(list);
@@ -197,7 +197,7 @@ namespace QHAQFWS.Core.Sync.Base
             }
             catch (Exception e)
             {
-                Logger.DebugFormat("{0} SyncData：{1}", e, ModelName, queue.Time.ToString("yyyy-MM-dd HH:mm:ss"));
+                Logger.DebugFormat("{0} SyncData：{1}", e, ModelName, time.ToString("yyyy-MM-dd HH:mm:ss"));
             }
         }
 
@@ -206,7 +206,7 @@ namespace QHAQFWS.Core.Sync.Base
         /// </summary>
         /// <param name="queue">同步队列</param>
         /// <returns></returns>
-        protected abstract List<TEntity> GetSyncData(SyncDataQueue queue);
+        protected abstract List<TEntity> GetSyncData(DateTime time);
 
         /// <summary>
         /// 判断是否已完成同步
@@ -230,6 +230,56 @@ namespace QHAQFWS.Core.Sync.Base
             catch (Exception e)
             {
                 Logger.ErrorFormat("{0} Cover", e, ModelName);
+            }
+        }
+
+        /// <summary>
+        /// 删除
+        /// </summary>
+        public virtual void Remove()
+        {
+            DateTime time = GetTime();
+            Remove(time);
+        }
+
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="time">时间</param>
+        public virtual void Remove(DateTime time)
+        {
+            try
+            {
+                SyncDataQueue queue = Model.SyncDataQueue.FirstOrDefault(o => o.ModelName == ModelName && o.Time == time);
+                if (queue != null)
+                {
+                    Model.SyncDataQueue.Remove(queue);
+                }
+                RemoveData(time);
+                Model.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                Logger.ErrorFormat("{0} CheckQueue", e, ModelName);
+            }
+        }
+
+        /// <summary>
+        /// 删除数据
+        /// </summary>
+        /// <param name="time">时间</param>
+        protected abstract void RemoveData(DateTime time);
+
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="startTime">开始时间</param>
+        /// <param name="endTime">结束时间</param>
+        public virtual void Remove(DateTime startTime, DateTime endTime)
+        {
+            for (DateTime time = startTime; time <= endTime; time = GetNextTime(time))
+            {
+                Remove(time);
             }
         }
 

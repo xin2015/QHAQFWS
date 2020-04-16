@@ -18,13 +18,13 @@ namespace QHAQFWS.Core.Sync
             StationList = Model.Station.Where(o => o.Status && o.Area != "未知城市" && o.UniqueCode.StartsWith("63")).ToList();
         }
 
-        protected override List<Air_StationAQIHistory_Day_Src_Std> GetSyncData(SyncDataQueue queue)
+        protected override List<Air_StationAQIHistory_Day_Src_Std> GetSyncData(DateTime time)
         {
             List<Air_StationAQIHistory_Day_Src_Std> list = new List<Air_StationAQIHistory_Day_Src_Std>();
             using (DataServiceClient client = new DataServiceClient())
             {
-                SiteDaily[] srcList = client.GetSiteDailyData(queue.Time, queue.Time, (int)AirQualityDataType.SourceStandard);
-                List<Air_StationAQIHistory_Day_Src_Std> existList = Model.Air_StationAQIHistory_Day_Src_Std.Where(o => o.TimePoint == queue.Time).ToList();
+                SiteDaily[] srcList = client.GetSiteDailyData(time, time, (int)AirQualityDataType.SourceStandard);
+                List<Air_StationAQIHistory_Day_Src_Std> existList = Model.Air_StationAQIHistory_Day_Src_Std.Where(o => o.TimePoint == time).ToList();
                 foreach (SiteDaily src in srcList)
                 {
                     Station station = StationList.FirstOrDefault(o => o.UniqueCode == src.SiteCode);
@@ -32,7 +32,7 @@ namespace QHAQFWS.Core.Sync
                     {
                         Air_StationAQIHistory_Day_Src_Std data = new Air_StationAQIHistory_Day_Src_Std()
                         {
-                            TimePoint = queue.Time,
+                            TimePoint = time,
                             Area = station.Area,
                             CityCode = station.DistrictCode.Value,
                             UniqueCode = station.UniqueCode,
@@ -61,6 +61,15 @@ namespace QHAQFWS.Core.Sync
         protected override bool IsSynchronized(DateTime time)
         {
             return Model.Air_StationAQIHistory_Day_Src_Std.Count(o => o.TimePoint == time) + 15 > StationList.Count;
+        }
+
+        protected override void RemoveData(DateTime time)
+        {
+            IQueryable<Air_StationAQIHistory_Day_Src_Std> list = Model.Air_StationAQIHistory_Day_Src_Std.Where(o => o.TimePoint == time);
+            if (list.Any())
+            {
+                Model.Air_StationAQIHistory_Day_Src_Std.RemoveRange(list);
+            }
         }
     }
 }

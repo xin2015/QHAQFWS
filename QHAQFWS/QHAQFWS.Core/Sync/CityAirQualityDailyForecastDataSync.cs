@@ -26,17 +26,17 @@ namespace QHAQFWS.Core.Sync
             return time.AddHours(9);
         }
 
-        protected override List<Tab_City_Result_Info> GetSyncData(SyncDataQueue queue)
+        protected override List<Tab_City_Result_Info> GetSyncData(DateTime time)
         {
             List<Tab_City_Result_Info> list = new List<Tab_City_Result_Info>();
-            List<City_Result_State> states = Model.City_Result_State.Where(o => o.Create_Date == queue.Time).ToList();
-            DateTime prevDay = queue.Time.AddDays(-1);
+            List<City_Result_State> states = Model.City_Result_State.Where(o => o.Create_Date == time).ToList();
+            DateTime prevDay = time.AddDays(-1);
             foreach (City_Result_State state in states)
             {
                 List<Tab_City_Result_Info> oldList = Model.Tab_City_Result_Info.Where(o => o.CityCode == state.CityCode && o.Publish_Date == prevDay).ToList();
                 for (int i = 0; i < 15; i++)
                 {
-                    DateTime forecastDate = queue.Time.AddDays(i);
+                    DateTime forecastDate = time.AddDays(i);
                     Tab_City_Result_Info old = oldList.FirstOrDefault(o => o.Forecast_Date == forecastDate);
                     Tab_City_Result_Info data;
                     if (old == null)
@@ -44,7 +44,7 @@ namespace QHAQFWS.Core.Sync
                         data = new Tab_City_Result_Info()
                         {
                             CityCode = state.CityCode,
-                            Publish_Date = queue.Time,
+                            Publish_Date = time,
                             Forecast_Date = forecastDate,
                             Create_Date = DateTime.Now,
                             State_TableID = state.ID,
@@ -59,7 +59,7 @@ namespace QHAQFWS.Core.Sync
                         data = new Tab_City_Result_Info()
                         {
                             CityCode = state.CityCode,
-                            Publish_Date = queue.Time,
+                            Publish_Date = time,
                             Forecast_Date = forecastDate,
                             Create_Date = DateTime.Now,
                             State_TableID = state.ID,
@@ -92,6 +92,15 @@ namespace QHAQFWS.Core.Sync
         protected override bool IsSynchronized(DateTime time)
         {
             return Model.Tab_City_Result_Info.FirstOrDefault(o => o.Publish_Date == time) != null;
+        }
+
+        protected override void RemoveData(DateTime time)
+        {
+            IQueryable<Tab_City_Result_Info> list = Model.Tab_City_Result_Info.Where(o => o.Publish_Date == time);
+            if (list.Any())
+            {
+                Model.Tab_City_Result_Info.RemoveRange(list);
+            }
         }
     }
 }

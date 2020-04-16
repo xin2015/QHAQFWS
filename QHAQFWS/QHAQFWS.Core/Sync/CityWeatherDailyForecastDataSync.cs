@@ -98,14 +98,14 @@ namespace QHAQFWS.Core.Sync
             return list;
         }
 
-        protected override List<City_WeatherForeastInfo> GetSyncData(SyncDataQueue queue)
+        protected override List<City_WeatherForeastInfo> GetSyncData(DateTime time)
         {
             List<City_WeatherForeastInfo> list = new List<City_WeatherForeastInfo>();
             foreach (Regional_Code regionalCode in RegionalCodeList)
             {
-                if (Model.City_WeatherForeastInfo.FirstOrDefault(o => o.CityCode == regionalCode.Area_Code && o.Timepoint == queue.Time) == null)
+                if (Model.City_WeatherForeastInfo.FirstOrDefault(o => o.CityCode == regionalCode.Area_Code && o.Timepoint == time) == null)
                 {
-                    list.AddRange(GetList(regionalCode, queue.Time));
+                    list.AddRange(GetList(regionalCode, time));
                 }
             }
             return list;
@@ -243,6 +243,15 @@ namespace QHAQFWS.Core.Sync
         protected override bool IsSynchronized(DateTime time)
         {
             return Model.City_WeatherForeastInfo.Count(o => o.Timepoint == time) == CityUrlDic.Count * 7;
+        }
+
+        protected override void RemoveData(DateTime time)
+        {
+            IQueryable<City_WeatherForeastInfo> list = Model.City_WeatherForeastInfo.Where(o => o.Timepoint == time);
+            if (list.Any())
+            {
+                Model.City_WeatherForeastInfo.RemoveRange(list);
+            }
         }
     }
 }

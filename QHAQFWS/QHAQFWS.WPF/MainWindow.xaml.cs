@@ -110,5 +110,27 @@ namespace QHAQFWS.WPF
                 ResultTextBox.Text = string.Format("Cover failed.{0} {1}", DateTime.Now, ex.Message);
             }
         }
+
+        private void Remove_Button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                GetTime();
+                string modelName = ModelNameComboBox.Text;
+                using (QHAQFWSModel model = new QHAQFWSModel())
+                {
+                    Type[] types = Assembly.GetAssembly(typeof(ISync)).GetTypes();
+                    Type syncType = types.FirstOrDefault(o => o.Name == modelName);
+                    ISync sync = (ISync)Activator.CreateInstance(syncType, model);
+                    sync.Remove(startTime, endTime);
+                    model.SaveChanges();
+                }
+                ResultTextBox.Text = string.Format("Remove succeed.{0}", DateTime.Now);
+            }
+            catch (Exception ex)
+            {
+                ResultTextBox.Text = string.Format("Remove failed.{0} {1}", DateTime.Now, ex.Message);
+            }
+        }
     }
 }

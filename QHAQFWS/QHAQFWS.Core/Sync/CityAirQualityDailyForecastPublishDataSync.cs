@@ -26,10 +26,10 @@ namespace QHAQFWS.Core.Sync
             return time.AddHours(10);
         }
 
-        protected override List<Tab_City_Result_Info_Publish> GetSyncData(SyncDataQueue queue)
+        protected override List<Tab_City_Result_Info_Publish> GetSyncData(DateTime time)
         {
             List<Tab_City_Result_Info_Publish> list = new List<Tab_City_Result_Info_Publish>();
-            List<Tab_City_Result_Info> srcList = Model.Tab_City_Result_Info.Where(o => o.Publish_Date == queue.Time).ToList();
+            List<Tab_City_Result_Info> srcList = Model.Tab_City_Result_Info.Where(o => o.Publish_Date == time).ToList();
             foreach (Tab_City_Result_Info src in srcList)
             {
                 Tab_City_Result_Info_Publish data = new Tab_City_Result_Info_Publish()
@@ -65,6 +65,15 @@ namespace QHAQFWS.Core.Sync
         protected override bool IsSynchronized(DateTime time)
         {
             return Model.Tab_City_Result_Info_Publish.FirstOrDefault(o => o.Publish_Date == time) != null;
+        }
+
+        protected override void RemoveData(DateTime time)
+        {
+            IQueryable<Tab_City_Result_Info_Publish> list = Model.Tab_City_Result_Info_Publish.Where(o => o.Publish_Date == time);
+            if (list.Any())
+            {
+                Model.Tab_City_Result_Info_Publish.RemoveRange(list);
+            }
         }
     }
 }

@@ -22,17 +22,17 @@ namespace QHAQFWS.Core.Sync
             return time.AddDays(3);
         }
 
-        protected override List<Air_CityAQIHistory_Day_App> GetSyncData(SyncDataQueue queue)
+        protected override List<Air_CityAQIHistory_Day_App> GetSyncData(DateTime time)
         {
             List<Air_CityAQIHistory_Day_App> list = new List<Air_CityAQIHistory_Day_App>();
             using (DataServiceClient client = new DataServiceClient())
             {
-                CityDaily[] srcList = client.GetCityDailyData(queue.Time, queue.Time, (int)AirQualityDataType.ApprovalLive);
+                CityDaily[] srcList = client.GetCityDailyData(time, time, (int)AirQualityDataType.ApprovalLive);
                 foreach (CityDaily src in srcList)
                 {
                     Air_CityAQIHistory_Day_App data = new Air_CityAQIHistory_Day_App()
                     {
-                        TimePoint = queue.Time,
+                        TimePoint = time,
                         Area = src.CityName,
                         CityCode = Convert.ToInt32(src.CityCode),
                         SO2_24h = Format(src.SO2, 1000),
@@ -58,6 +58,15 @@ namespace QHAQFWS.Core.Sync
         protected override bool IsSynchronized(DateTime time)
         {
             return Model.Air_CityAQIHistory_Day_App.FirstOrDefault(o => o.TimePoint == time) != null;
+        }
+
+        protected override void RemoveData(DateTime time)
+        {
+            IQueryable<Air_CityAQIHistory_Day_App> list = Model.Air_CityAQIHistory_Day_App.Where(o => o.TimePoint == time);
+            if (list.Any())
+            {
+                Model.Air_CityAQIHistory_Day_App.RemoveRange(list);
+            }
         }
     }
 }

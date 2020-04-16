@@ -40,12 +40,12 @@ namespace QHAQFWS.Core.Sync
             return time.AddHours(1);
         }
 
-        protected override List<Weather_H_SpiData> GetSyncData(SyncDataQueue queue)
+        protected override List<Weather_H_SpiData> GetSyncData(DateTime time)
         {
             List<Weather_H_SpiData> list = new List<Weather_H_SpiData>();
             using (MeteorologyDataClient client = new MeteorologyDataClient())
             {
-                Weather_H_SpiDatum[] srcList = client.GetHourSpiData(CityDic.Keys.ToArray(), queue.Time, queue.Time);
+                Weather_H_SpiDatum[] srcList = client.GetHourSpiData(CityDic.Keys.ToArray(), time, time);
                 foreach (Weather_H_SpiDatum src in srcList)
                 {
                     Weather_H_SpiData data = new Weather_H_SpiData()
@@ -71,6 +71,15 @@ namespace QHAQFWS.Core.Sync
         protected override bool IsSynchronized(DateTime time)
         {
             return Model.Weather_H_SpiData.FirstOrDefault(o => o.TimePoint == time) != null;
+        }
+
+        protected override void RemoveData(DateTime time)
+        {
+            IQueryable<Weather_H_SpiData> list = Model.Weather_H_SpiData.Where(o => o.TimePoint == time);
+            if (list.Any())
+            {
+                Model.Weather_H_SpiData.RemoveRange(list);
+            }
         }
     }
 }

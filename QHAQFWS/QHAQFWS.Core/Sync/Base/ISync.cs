@@ -34,5 +34,8 @@ namespace QHAQFWS.Core.Sync.Base
         /// 回补
         /// </summary>
         void Cover();
+        void Remove();
+        void Remove(DateTime time);
+        void Remove(DateTime startTime, DateTime endTime);
     }
 }

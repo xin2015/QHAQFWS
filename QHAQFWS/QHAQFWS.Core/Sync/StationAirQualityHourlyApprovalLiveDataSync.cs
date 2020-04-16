@@ -33,13 +33,13 @@ namespace QHAQFWS.Core.Sync
             return time.AddHours(1);
         }
 
-        protected override List<Air_StationAQIHistory_H_App> GetSyncData(SyncDataQueue queue)
+        protected override List<Air_StationAQIHistory_H_App> GetSyncData(DateTime time)
         {
             List<Air_StationAQIHistory_H_App> list = new List<Air_StationAQIHistory_H_App>();
             using (DataServiceClient client = new DataServiceClient())
             {
-                SiteDaily[] srcList = client.GetSiteHoursData(queue.Time, queue.Time, (int)AirQualityDataType.ApprovalLive);
-                List<Air_StationAQIHistory_H_App> existList = Model.Air_StationAQIHistory_H_App.Where(o => o.TimePoint == queue.Time).ToList();
+                SiteDaily[] srcList = client.GetSiteHoursData(time, time, (int)AirQualityDataType.ApprovalLive);
+                List<Air_StationAQIHistory_H_App> existList = Model.Air_StationAQIHistory_H_App.Where(o => o.TimePoint == time).ToList();
                 foreach (SiteDaily src in srcList)
                 {
                     Station station = StationList.FirstOrDefault(o => o.UniqueCode == src.SiteCode);
@@ -47,7 +47,7 @@ namespace QHAQFWS.Core.Sync
                     {
                         Air_StationAQIHistory_H_App data = new Air_StationAQIHistory_H_App()
                         {
-                            TimePoint = queue.Time,
+                            TimePoint = time,
                             Area = station.Area,
                             CityCode = station.DistrictCode.Value,
                             UniqueCode = station.UniqueCode,
@@ -82,6 +82,15 @@ namespace QHAQFWS.Core.Sync
         protected override bool IsSynchronized(DateTime time)
         {
             return Model.Air_StationAQIHistory_H_App.Count(o => o.TimePoint == time) + 15 > StationList.Count;
+        }
+
+        protected override void RemoveData(DateTime time)
+        {
+            IQueryable<Air_StationAQIHistory_H_App> list = Model.Air_StationAQIHistory_H_App.Where(o => o.TimePoint == time);
+            if (list.Any())
+            {
+                Model.Air_StationAQIHistory_H_App.RemoveRange(list);
+            }
         }
     }
 }

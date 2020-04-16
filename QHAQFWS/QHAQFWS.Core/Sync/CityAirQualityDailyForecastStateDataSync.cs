@@ -25,7 +25,7 @@ namespace QHAQFWS.Core.Sync
             return time;
         }
 
-        protected override List<City_Result_State> GetSyncData(SyncDataQueue queue)
+        protected override List<City_Result_State> GetSyncData(DateTime time)
         {
             List<City_Result_State> list = new List<City_Result_State>();
             List<Regional_Code> regionalCodes = Model.Regional_Code.Where(o => o.Status == 1).ToList();
@@ -34,7 +34,7 @@ namespace QHAQFWS.Core.Sync
                 City_Result_State data = new City_Result_State()
                 {
                     CityCode = regionalCode.Area_Code,
-                    Create_Date = queue.Time,
+                    Create_Date = time,
                     Step_Key = "8000",
                     Is_Modifying = 0,
                     Is_Agreed = 0,
@@ -52,6 +52,15 @@ namespace QHAQFWS.Core.Sync
         protected override bool IsSynchronized(DateTime time)
         {
             return Model.City_Result_State.FirstOrDefault(o => o.Create_Date == time) != null;
+        }
+
+        protected override void RemoveData(DateTime time)
+        {
+            IQueryable<City_Result_State> list = Model.City_Result_State.Where(o => o.Create_Date == time);
+            if (list.Any())
+            {
+                Model.City_Result_State.RemoveRange(list);
+            }
         }
     }
 }
